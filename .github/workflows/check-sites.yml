@@ -1,8 +1,10 @@
-# 公式サイトリンクの自動点検（毎週）
-# scripts/check-sites.mjs を実行し、結果 (src/data/site-check.json) が変わっていればコミットして push する。
-# push により Vercel の Git 連携があれば自動デプロイされ、アプリ内の「最終自動確認」日付が更新される。
-# Git 連携が無い環境向けに、VERCEL_DEPLOY_HOOK シークレットがあればデプロイフックも叩く。
-name: 公式サイト到達確認
+# 自動更新データの週次点検
+# 1. scripts/fetch-schools.mjs … 文部科学省「学校コード一覧」から全国の高校（校名・所在地・設置区分）を取得
+# 2. scripts/check-sites.mjs   … 詳細データ校の公式サイトが到達できるか確認
+# 生成ファイルが変わっていればコミットして push する。
+# push により Vercel の Git 連携で自動デプロイされ、アプリ内の「最終自動確認」日付が更新される。
+# 併せて VERCEL_DEPLOY_HOOK シークレットがあればデプロイフックも叩く（Git 連携が無い環境向けの保険）。
+name: 自動更新データの週次点検
 
 on:
   schedule:
@@ -20,18 +22,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: 到達確認
+      - name: 文科省 学校コード一覧から全国の高校を取得
+        run: node scripts/fetch-schools.mjs
+      - name: 公式サイト到達確認
         run: node scripts/check-sites.mjs
       - name: 変更があればコミット
         id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/site-check.json
+          git add src/data/site-check.json src/data/base-schools.json src/data/base-schools-meta.json
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git commit -m "公式サイト到達確認を自動更新 ($(date -u +%Y-%m-%d))"
+            git commit -m "自動更新データを更新: 学校一覧・公式サイト到達確認 ($(date -u +%Y-%m-%d))"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi

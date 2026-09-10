@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import DataFreshness from '../components/DataFreshness'
 import SchoolLinks from '../components/SchoolLinks'
-import { getSchool } from '../data/schools'
+import { DATA_UPDATED_AT, getSchool } from '../data/schools'
 import { checkClub, clubLabel, matchSchool } from '../lib/matching'
 import { loadCompare, loadFavorites, loadOrEmpty, toggleCompare, toggleFavorite } from '../lib/storage'
 
@@ -60,7 +60,7 @@ export default function SchoolDetail() {
       <section className="panel" style={{ marginTop: 18 }}>
         <div className="kv">
           <b>学科</b><span>{school.course}</span>
-          <b>偏差値目安</b><span>{school.hensachi}</span>
+          <b>偏差値目安</b><span>{school.hensachi}<span className="tiny">　（{DATA_UPDATED_AT}時点の調べ。年度で変わります）</span></span>
           <b>内申目安</b><span>{school.naishin} / 45</span>
           <b>最寄り駅</b>
           <span>
@@ -78,7 +78,7 @@ export default function SchoolDetail() {
           <b>部活動（確認済み）</b>
           <span>
             {school.clubs.join('、')}
-            <span className="tiny" style={{ display: 'block' }}>掲載は一部です。ここに無い部活は「なし」ではなく「未確認」。全一覧は公式サイトで。</span>
+            <span className="tiny" style={{ display: 'block' }}>{DATA_UPDATED_AT}時点の確認。掲載は一部です。ここに無い部活は「なし」ではなく「未確認」。全一覧は公式サイトで。</span>
           </span>
           <b>校風</b><span>{school.atmosphere.join('／')}</span>
         </div>

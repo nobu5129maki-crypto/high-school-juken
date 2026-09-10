@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import AreaSchoolList from '../components/AreaSchoolList'
 import DataFreshness from '../components/DataFreshness'
 import SchoolCard from '../components/SchoolCard'
+import { DATA_UPDATED_AT } from '../data/schools'
 import { clubLabel, rankSchools } from '../lib/matching'
 import { hasDiagnosis, loadOrEmpty } from '../lib/storage'
 import type { Chance } from '../types'
@@ -91,8 +93,10 @@ export default function Results() {
       </div>
       {shown.length > 30 ? <p className="tiny">上位30校を表示しています。絞り込みで残りを確認できます。</p> : null}
       <p className="disclaimer">
-        上位にモデル校が出ることがあります。偏差値・内申は目安です。部活動は「確認済み」以外は存在を保証しません。実在校の最新情報は必ず公式サイトと募集要項で確認してください。
+        上位にモデル校が出ることがあります。偏差値・内申は目安（{DATA_UPDATED_AT}時点の調べ）です。部活動は「確認済み」以外は存在を保証しません。実在校の最新情報は必ず公式サイトと募集要項で確認してください。
       </p>
+
+      <AreaSchoolList profile={profile} />
     </div>
   )
 }

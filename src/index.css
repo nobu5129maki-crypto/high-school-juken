@@ -289,6 +289,17 @@ button.on {
 .fresh-dot.manual { background: var(--gold); }
 .fresh-dot.auto { background: var(--safe); box-shadow: 0 0 0 3px rgba(47, 111, 78, 0.18); }
 .fresh-note { margin: 0; }
+.fresh-head { font-weight: 700; letter-spacing: 0.04em; color: var(--safe); }
+
+/* 文科省一覧に基づく地域の全高校 */
+.area-list { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+.area-list h2 { font-size: 20px; margin: 0 0 6px; }
+.area-list h2 .muted { font-size: 14px; font-weight: 500; margin-left: 6px; }
+.area-items { list-style: none; padding: 0; margin: 8px 0 12px; display: grid; gap: 8px; }
+.area-item { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.area-name { font-weight: 700; font-size: 15px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.area-name a { color: inherit; }
+.area-item .links { margin-top: 6px; }
 .fresh-compact { border-top: 1px dashed var(--line); padding-top: 8px; }
 
 .filters { display: flex; gap: 8px; overflow: auto; padding-bottom: 8px; }

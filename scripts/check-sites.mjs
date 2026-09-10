@@ -33,11 +33,20 @@ function isNetworkError(r) {
   return r.status === 0 && /TIMEOUT|ECONNRESET|ECONNREFUSED|AbortError|EHOSTUNREACH|ENETUNREACH/i.test(r.error ?? '')
 }
 
+// 証明書チェーンの不備など、Node の fetch では失敗するがブラウザでは開けるTLSエラーか
+// （中間証明書の未配信・古い鍵長など。サイト自体は存在し、ブラウザは補完して表示できる）
+function isTlsChainError(r) {
+  return r.status === 0 && /UNABLE_TO_VERIFY_LEAF_SIGNATURE|DH_KEY_TOO_SMALL|ALTNAME_INVALID|UNABLE_TO_GET_ISSUER_CERT/i.test(r.error ?? '')
+}
+
 async function probe(url, previous) {
   let r = await fetchOnce(url, TIMEOUT_MS)
   if (isNetworkError(r)) {
     // 一時的な不調の可能性があるので、時間を延ばして1回だけ再試行
     r = await fetchOnce(url, RETRY_TIMEOUT_MS)
+  }
+  if (isTlsChainError(r)) {
+    return { ok: true, status: 0, error: r.error, note: 'tls-chain' }
   }
   if (isNetworkError(r) && previous?.ok) {
     // 海外の実行環境（GitHub Actions）からの接続を遮断している学校サイトがある。
@@ -61,8 +70,9 @@ async function main() {
       const url = websites[id]
       const r = await probe(url, previous[id])
       results[id] = r
-      const mark = r.note === 'timeout-kept' ? 'OK*' : r.ok ? 'OK ' : 'NG '
-      console.log(`${mark} ${String(r.status).padStart(3)}  ${id}  ${url}${r.finalUrl && r.finalUrl !== url ? '  -> ' + r.finalUrl : ''}${r.error ? '  ' + r.error : ''}${r.note === 'timeout-kept' ? '  （接続タイムアウト。前回OKのため維持）' : ''}`)
+      const mark = r.note ? 'OK*' : r.ok ? 'OK ' : 'NG '
+      const noteText = r.note === 'timeout-kept' ? '  （接続タイムアウト。前回OKのため維持）' : r.note === 'tls-chain' ? '  （証明書チェーン不備。ブラウザでは表示可のためOK扱い）' : ''
+      console.log(`${mark} ${String(r.status).padStart(3)}  ${id}  ${url}${r.finalUrl && r.finalUrl !== url ? '  -> ' + r.finalUrl : ''}${r.error ? '  ' + r.error : ''}${noteText}`)
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker))

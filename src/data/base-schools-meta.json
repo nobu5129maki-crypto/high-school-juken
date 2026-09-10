@@ -1,0 +1,12 @@
+{
+  "source": "文部科学省 学校コード一覧",
+  "sourceUrl": "https://www.mext.go.jp/b_menu/toukei/mext_01087.html",
+  "sourceDate": "2026/5/20",
+  "checkedAt": "2026-09-10T12:53:14.005Z",
+  "total": 4903,
+  "byKind": {
+    "私立": 1466,
+    "公立": 3422,
+    "国立": 15
+  }
+}

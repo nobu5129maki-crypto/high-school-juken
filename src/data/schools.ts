@@ -1,6 +1,7 @@
 import type { School } from '../types'
 import type { Seed } from './seed'
 import { dormSeeds } from './dormSchools'
+import { majorSeeds } from './majorSeeds'
 import websites from './websites.json'
 import siteCheck from './site-check.json'
 
@@ -144,15 +145,17 @@ function toSchool(s: Seed): School {
   const clubs = [...s.clubs]
   if (BASEBALL_CONFIRMED.has(s.id) && !clubs.some((c) => c.includes('野球'))) clubs.push('硬式野球')
   const st = STATIONS[s.id]
+  // seed 側でキーだけ存在し値が undefined のもの（majorSeeds など）に既定値で上書きされないよう、
+  // スプレッドを先に置いて派生値を後から確定させる
   return {
+    ...s,
     gender: s.gender ?? '共学',
     naishin: naishinFromHensachi(s.hensachi),
     tuition,
     lifestyle: s.lifestyle ?? '標準',
     website: s.model ? undefined : WEBSITES[s.id],
-    station: st?.station,
-    stationMin: st?.min,
-    ...s,
+    station: s.station ?? st?.station,
+    stationMin: s.stationMin ?? st?.min,
     clubs,
   }
 }
@@ -1955,7 +1958,7 @@ function withCoverage(list: School[]): School[] {
   return [...list, ...extras]
 }
 
-export const SCHOOLS: School[] = withCoverage([...seeds, ...dormSeeds].map(toSchool))
+export const SCHOOLS: School[] = withCoverage([...seeds, ...dormSeeds, ...majorSeeds].map(toSchool))
 
 /** 公式サイトの到達確認結果（無ければ未確認） */
 export function siteStatus(id: string): { ok: boolean; status: number } | undefined {

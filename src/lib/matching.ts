@@ -1,25 +1,6 @@
+import { distance } from '../data/prefectures'
 import { DATA_UPDATED_AT, SCHOOLS } from '../data/schools'
 import type { Chance, ClubCheck, MatchResult, Profile, School } from '../types'
-
-const NEAR: Record<string, string[]> = {
-  東京都: ['神奈川県', '埼玉県', '千葉県'],
-  神奈川県: ['東京都'],
-  埼玉県: ['東京都'],
-  千葉県: ['東京都'],
-  大阪府: ['兵庫県', '京都府', '奈良県'],
-  兵庫県: ['大阪府', '京都府'],
-  京都府: ['大阪府', '奈良県', '滋賀県'],
-  奈良県: ['大阪府', '京都府'],
-  愛知県: ['岐阜県', '三重県'],
-  岐阜県: ['愛知県'],
-  福岡県: ['佐賀県'],
-}
-
-function distance(profilePref: string, schoolPref: string) {
-  if (profilePref === schoolPref) return 'same' as const
-  if (NEAR[profilePref]?.includes(schoolPref)) return 'near' as const
-  return 'far' as const
-}
 
 function chanceFromGap(gap: number): Chance {
   if (gap >= 6) return '安全'
@@ -229,7 +210,10 @@ export function matchSchool(school: School, profile: Profile): MatchResult | nul
  * 自宅の最寄り駅から学校までの乗換検索リンク（Google マップ・公共交通）。
  * 学校側の最寄り駅が分かっていればそこを目的地に、無ければ学校名で検索する。
  */
-export function routeUrl(school: School, homeStation: string) {
+/** リンク生成に必要な最小限の学校情報（詳細データ校・基本情報のみの校のどちらでも使える） */
+export type LinkTarget = { name: string; prefecture: string; city: string; station?: string }
+
+export function routeUrl(school: LinkTarget, homeStation: string) {
   const origin = homeStation.trim()
   if (!origin) return null
   const originQ = /駅$/.test(origin) ? origin : `${origin}駅`
@@ -239,7 +223,7 @@ export function routeUrl(school: School, homeStation: string) {
 }
 
 /** 公式サイトが未登録の学校向けの検索リンク */
-export function searchUrl(school: School, extra = '公式サイト') {
+export function searchUrl(school: LinkTarget, extra = '公式サイト') {
   return `https://www.google.com/search?q=${encodeURIComponent(`${school.name} ${school.prefecture} ${extra}`)}`
 }
 

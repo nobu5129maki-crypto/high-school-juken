@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "check-sites": "node scripts/check-sites.mjs",
+    "fetch-schools": "node scripts/fetch-schools.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
