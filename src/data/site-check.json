@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-09-10T11:33:26.979Z",
+  "checkedAt": "2026-09-10T11:35:42.622Z",
   "total": 110,
-  "ok": 106,
+  "ok": 110,
   "results": {
     "hokkaido-sapporo-minami": {
       "ok": true,
@@ -200,8 +200,8 @@
       "status": 200
     },
     "hyogo-kobe": {
-      "ok": false,
-      "status": 0
+      "ok": true,
+      "status": 200
     },
     "hyogo-nagata": {
       "ok": true,
@@ -244,8 +244,8 @@
       "status": 200
     },
     "ehime-matsuyama-higashi": {
-      "ok": false,
-      "status": 0
+      "ok": true,
+      "status": 200
     },
     "kochi-otemae": {
       "ok": true,
@@ -368,8 +368,8 @@
       "status": 200
     },
     "ishikawa-seiryo": {
-      "ok": false,
-      "status": 0
+      "ok": true,
+      "status": 200
     },
     "yamanashi-gakuin": {
       "ok": true,
@@ -400,8 +400,8 @@
       "status": 200
     },
     "hiroshima-koryo": {
-      "ok": false,
-      "status": 0
+      "ok": true,
+      "status": 200
     },
     "kagawa-jinsei": {
       "ok": true,
