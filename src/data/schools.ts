@@ -3,6 +3,7 @@ import type { Seed } from './seed'
 import { dormSeeds } from './dormSchools'
 import { majorSeeds } from './majorSeeds'
 import { regionalSeeds } from './regionalSeeds'
+import { regionalSeeds2 } from './regionalSeeds2'
 import websites from './websites.json'
 import siteCheck from './site-check.json'
 
@@ -1959,7 +1960,7 @@ function withCoverage(list: School[]): School[] {
   return [...list, ...extras]
 }
 
-export const SCHOOLS: School[] = withCoverage([...seeds, ...dormSeeds, ...majorSeeds, ...regionalSeeds].map(toSchool))
+export const SCHOOLS: School[] = withCoverage([...seeds, ...dormSeeds, ...majorSeeds, ...regionalSeeds, ...regionalSeeds2].map(toSchool))
 
 /** 公式サイトの到達確認結果（無ければ未確認） */
 export function siteStatus(id: string): { ok: boolean; status: number } | undefined {

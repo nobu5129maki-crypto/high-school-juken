@@ -67,6 +67,19 @@ const EXAM: Record<string, { style: string; season: string; key: string }> = {
   '広島県|私立': { style: '私立一般（3〜5教科）／推薦・専願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
   '岡山県|私立': { style: '私立一般（3〜5教科）／推薦・専願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
   '熊本県|私立': { style: '私立一般（3〜5教科）／専願・奨学生', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
+  // ---- 第3弾（新潟・長野・奈良・四国・沖縄）※京都は第1弾で定義済み
+  '新潟県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'niigata-public' },
+  '長野県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立後期）', key: 'nagano-public' },
+  '奈良県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'nara-public' },
+  '香川県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'kagawa-public' },
+  '愛媛県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'ehime-public' },
+  '沖縄県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'okinawa-public' },
+  '新潟県|私立': { style: '私立一般（3〜5教科）／専願・併願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
+  '長野県|私立': { style: '私立一般（3〜5教科）／推薦・一般', season: '1月中旬〜2月上旬（私立）', key: 'private-jan' },
+  '奈良県|私立': { style: '私立一般（3〜5教科）／専願・併願', season: '2月上旬〜中旬（私立）', key: 'private-feb' },
+  '香川県|私立': { style: '私立一般（5教科）／推薦・専願', season: '1月中旬〜下旬（私立）', key: 'private-jan' },
+  '愛媛県|私立': { style: '私立一般（5教科）／推薦・専願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
+  '沖縄県|私立': { style: '私立一般（5教科）／推薦・専願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
 }
 
 function notes(q: Quick) {
