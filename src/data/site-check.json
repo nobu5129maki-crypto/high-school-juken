@@ -1,11 +1,19 @@
 {
-  "checkedAt": "2026-09-10T22:28:45.401Z",
-  "total": 970,
-  "ok": 970,
+  "checkedAt": "2026-09-10T23:51:31.637Z",
+  "total": 1310,
+  "ok": 1310,
   "results": {
     "aichi-aichi": {
       "ok": true,
       "status": 200
+    },
+    "aichi-anjo-gakuen": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-anjo-higashi": {
+      "ok": true,
+      "status": 403
     },
     "aichi-asakagaoka": {
       "ok": true,
@@ -27,9 +35,25 @@
       "ok": true,
       "status": 200
     },
+    "aichi-daido": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-gojo": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-handa": {
+      "ok": true,
+      "status": 200
+    },
     "aichi-ichinomiya": {
       "ok": true,
       "status": 200
+    },
+    "aichi-ichinomiya-nishi": {
+      "ok": true,
+      "status": 403
     },
     "aichi-jishukan": {
       "ok": true,
@@ -38,6 +62,10 @@
     "aichi-kariya": {
       "ok": true,
       "status": 403
+    },
+    "aichi-kasugai": {
+      "ok": true,
+      "status": 200
     },
     "aichi-keisei": {
       "ok": true,
@@ -48,6 +76,14 @@
       "status": 200
     },
     "aichi-kogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-konan": {
+      "ok": true,
+      "status": 403
+    },
+    "aichi-kou": {
       "ok": true,
       "status": 200
     },
@@ -79,7 +115,15 @@
       "ok": true,
       "status": 200
     },
+    "aichi-nagoya-kokusai": {
+      "ok": true,
+      "status": 200
+    },
     "aichi-nagoya-minami": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-nagoya-nishi": {
       "ok": true,
       "status": 200
     },
@@ -91,7 +135,27 @@
       "ok": true,
       "status": 200
     },
+    "aichi-nishio": {
+      "ok": true,
+      "status": 200
+    },
     "aichi-okazaki": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-okazaki-josai": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-okazaki-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-sakuradai": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-sakuragaoka": {
       "ok": true,
       "status": 200
     },
@@ -111,6 +175,14 @@
       "ok": true,
       "status": 403
     },
+    "aichi-sugiyama": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-taisei": {
+      "ok": true,
+      "status": 200
+    },
     "aichi-taki": {
       "ok": true,
       "status": 200
@@ -123,11 +195,27 @@
       "ok": true,
       "status": 200
     },
+    "aichi-tokai-gakuen": {
+      "ok": true,
+      "status": 200
+    },
     "aichi-toyoake": {
       "ok": true,
       "status": 200
     },
+    "aichi-toyohashi-higashi": {
+      "ok": true,
+      "status": 200
+    },
     "aichi-toyokawa": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-toyota-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-tsushima": {
       "ok": true,
       "status": 200
     },
@@ -247,7 +335,19 @@
       "ok": true,
       "status": 200
     },
+    "chiba-awa": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-chiba": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-chosei": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-choshi-shogyo": {
       "ok": true,
       "status": 200
     },
@@ -271,6 +371,10 @@
       "ok": true,
       "status": 200
     },
+    "chiba-ichihara-chuo": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-ichikawa": {
       "ok": true,
       "status": 200
@@ -279,11 +383,31 @@
       "ok": true,
       "status": 200
     },
+    "chiba-joshi": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-kashiwa-chuo": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-kashiwa-minami": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-kashiwanoha": {
       "ok": true,
       "status": 200
     },
     "chiba-keiai": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-keiai-shi": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-kimitsu": {
       "ok": true,
       "status": 200
     },
@@ -299,7 +423,23 @@
       "ok": true,
       "status": 200
     },
+    "chiba-konodai": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-makuhari-sogo": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-matsudo-kokusai": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-meitoku": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-minami": {
       "ok": true,
       "status": 200
     },
@@ -307,11 +447,39 @@
       "ok": true,
       "status": 200
     },
+    "chiba-narita": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-narita-kokusai": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-narutou": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-nichidai-ichi": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-nishi": {
       "ok": true,
       "status": 200
     },
+    "chiba-nisho-kashiwa": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-nittai-kashiwa": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-reimei": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-reitaku": {
       "ok": true,
       "status": 200
     },
@@ -323,7 +491,19 @@
       "ok": true,
       "status": 200
     },
+    "chiba-sawara": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-seibudai-chiba": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-senshu-matsudo": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-shibaura-kashiwa": {
       "ok": true,
       "status": 200
     },
@@ -331,7 +511,23 @@
       "ok": true,
       "status": 200
     },
+    "chiba-shigakukan": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-shiritsu-chiba": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-shorin": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-showa-shuei": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-sosa": {
       "ok": true,
       "status": 200
     },
@@ -339,7 +535,15 @@
       "ok": true,
       "status": 200
     },
+    "chiba-togane": {
+      "ok": true,
+      "status": 200
+    },
     "chiba-tohkatsu": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-tokai-ichihara": {
       "ok": true,
       "status": 200
     },
@@ -348,6 +552,10 @@
       "status": 200
     },
     "chiba-tsudanuma": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-yachiyo": {
       "ok": true,
       "status": 200
     },
@@ -499,6 +707,14 @@
       "ok": true,
       "status": 200
     },
+    "fukuoka-chikushi": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-chikushi-jogakuen": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-chikushigaoka": {
       "ok": true,
       "status": 200
@@ -519,6 +735,10 @@
       "ok": true,
       "status": 200
     },
+    "fukuoka-denshukan": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-fit-joto": {
       "ok": true,
       "status": 200
@@ -531,11 +751,35 @@
       "ok": true,
       "status": 200
     },
+    "fukuoka-hakata-seisho": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-higashi": {
       "ok": true,
       "status": 200
     },
+    "fukuoka-itoshima": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-jiyugaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-jogakuin": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-jonan": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-kaho": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-kashii": {
       "ok": true,
       "status": 200
     },
@@ -547,11 +791,27 @@
       "ok": true,
       "status": 200
     },
+    "fukuoka-kindai-fukuoka": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-kogyo": {
       "ok": true,
       "status": 200
     },
     "fukuoka-kokura": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-kurate": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-kurume": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-kurume-fusetsu": {
       "ok": true,
       "status": 200
     },
@@ -563,11 +823,31 @@
       "ok": true,
       "status": 200
     },
+    "fukuoka-meiji-gakuen": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-meizen": {
       "ok": true,
       "status": 200
     },
+    "fukuoka-miike": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-miyako": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-munakata": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-nakamura-joshi": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-nakamura-sanyo": {
       "ok": true,
       "status": 200
     },
@@ -587,7 +867,15 @@
       "ok": true,
       "status": 200
     },
+    "fukuoka-seiryo": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-shingu": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-shinsokan": {
       "ok": true,
       "status": 200
     },
@@ -595,7 +883,23 @@
       "ok": true,
       "status": 200
     },
+    "fukuoka-tobata": {
+      "ok": true,
+      "status": 200
+    },
     "fukuoka-tochiku": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-tokai": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-yahata": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-yanagawa": {
       "ok": true,
       "status": 200
     },
@@ -803,6 +1107,22 @@
       "ok": true,
       "status": 200
     },
+    "hiroshima-aki-fuchu": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-eishin": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-fukuyama-iyo": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-fukuyama-myoodai": {
+      "ok": true,
+      "status": 200
+    },
     "hiroshima-fukuyama-seishikan": {
       "ok": true,
       "status": 200
@@ -811,7 +1131,27 @@
       "ok": true,
       "status": 200
     },
+    "hiroshima-gion-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-goko": {
+      "ok": true,
+      "status": 200
+    },
     "hiroshima-hatsukaichi": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-inokuchi": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-itsukaichi": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-johoku": {
       "ok": true,
       "status": 200
     },
@@ -823,7 +1163,19 @@
       "ok": true,
       "status": 200
     },
+    "hiroshima-kamo": {
+      "ok": true,
+      "status": 200
+    },
     "hiroshima-kannon": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-kindai-fukuyama": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-kodai": {
       "ok": true,
       "status": 200
     },
@@ -843,7 +1195,19 @@
       "ok": true,
       "status": 200
     },
+    "hiroshima-kure-miyahara": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-mihara": {
+      "ok": true,
+      "status": 200
+    },
     "hiroshima-minami": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-miyoshi": {
       "ok": true,
       "status": 200
     },
@@ -852,6 +1216,14 @@
       "status": 200
     },
     "hiroshima-nagisa": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-numata": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-onomichi-higashi": {
       "ok": true,
       "status": 200
     },
@@ -879,7 +1251,75 @@
       "ok": true,
       "status": 200
     },
+    "hiroshima-takeda": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-yasuda-joshi": {
+      "ok": true,
+      "status": 200
+    },
     "hiroshima-yasufuruichi": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-abashiri-minamigaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-eirei": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-higashi": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-jitsugyo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-kogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-ryukoku": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-asahikawa-tosei": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-bushukan": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-chitose": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-eniwa-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-fuji-joshi": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-hakodate-chubu": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-hakodate-kogyo": {
       "ok": true,
       "status": 200
     },
@@ -887,7 +1327,23 @@
       "ok": true,
       "status": 200
     },
+    "hokkaido-hakodate-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-hakodate-shirayuri": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-hakodate-yuto": {
+      "ok": true,
+      "status": 200
+    },
     "hokkaido-hokkai": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-hokkaigakuen-sapporo": {
       "ok": true,
       "status": 200
     },
@@ -895,7 +1351,31 @@
       "ok": true,
       "status": 200
     },
+    "hokkaido-hokusho": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-iai": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-iwamizawa-higashi": {
+      "ok": true,
+      "status": 200
+    },
     "hokkaido-kagakudai": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-kitahiroshima": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-kitami-hakuyo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-kitami-hokuto": {
       "ok": true,
       "status": 200
     },
@@ -903,7 +1383,63 @@
       "ok": true,
       "status": 200
     },
+    "hokkaido-kushiro-hokuyo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-kushiro-konan": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-kushiro-koryo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-muroran-sakae": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-muroran-shimizugaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-nayoro": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-oasa": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-obihiro-hakuyo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-obihiro-otani": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-obihiro-ryokuyo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-obihiro-sanjo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-otaru-choryo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-otaru-oyo": {
+      "ok": true,
+      "status": 200
+    },
     "hokkaido-ritsumeikan-keisho": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-sakae": {
       "ok": true,
       "status": 200
     },
@@ -929,11 +1465,19 @@
       "status": 0,
       "note": "tls-chain"
     },
+    "hokkaido-sapporo-hokuryo": {
+      "ok": true,
+      "status": 200
+    },
     "hokkaido-sapporo-keisei": {
       "ok": true,
       "status": 200
     },
     "hokkaido-sapporo-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-sapporo-kiyota": {
       "ok": true,
       "status": 200
     },
@@ -949,7 +1493,15 @@
       "ok": true,
       "status": 200
     },
+    "hokkaido-sapporo-kotoni-kogyo": {
+      "ok": true,
+      "status": 200
+    },
     "hokkaido-sapporo-minami": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-sapporo-moiwa": {
       "ok": true,
       "status": 200
     },
@@ -958,6 +1510,14 @@
       "status": 200
     },
     "hokkaido-sapporo-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-sapporo-otani": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-sapporo-seiryo": {
       "ok": true,
       "status": 200
     },
@@ -974,11 +1534,43 @@
       "ok": true,
       "status": 200
     },
+    "hokkaido-sapporo-toryo": {
+      "ok": true,
+      "status": 200
+    },
     "hokkaido-sapporo-tsukisamu": {
       "ok": true,
       "status": 200
     },
+    "hokkaido-sapporo-yamanote": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-shirakaba": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-shiritsu-hakodate": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-takikawa": {
+      "ok": true,
+      "status": 200
+    },
     "hokkaido-tokai-sapporo": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-tomakomai-higashi": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-towanomori": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-wakkanai": {
       "ok": true,
       "status": 200
     },
@@ -994,7 +1586,35 @@
       "ok": true,
       "status": 200
     },
+    "hyogo-amagasaki-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-fukiai": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-hakuryo": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-hibarigaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-himeji-higashi": {
+      "ok": true,
+      "status": 200
+    },
     "hyogo-himeji-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-himeji-shikisai": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-hokusetsu-sanda": {
       "ok": true,
       "status": 200
     },
@@ -1018,11 +1638,23 @@
       "ok": true,
       "status": 200
     },
-    "hyogo-kobe": {
+    "hyogo-kakogawa-nishi": {
       "ok": true,
       "status": 200
     },
-    "hyogo-kobegakuin": {
+    "hyogo-kawanishi-midoridai": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-keimei": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-kitasuma": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-kobe": {
       "ok": true,
       "status": 200
     },
@@ -1031,6 +1663,14 @@
       "status": 200
     },
     "hyogo-kobe-koryo": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-kobe-ryukoku": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-kobegakuin": {
       "ok": true,
       "status": 200
     },
@@ -1046,6 +1686,18 @@
       "ok": true,
       "status": 200
     },
+    "hyogo-miki": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-mukogawa-joshi": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-nada": {
+      "ok": true,
+      "status": 200
+    },
     "hyogo-nagata": {
       "ok": true,
       "status": 200
@@ -1058,7 +1710,15 @@
       "ok": true,
       "status": 200
     },
+    "hyogo-nishinomiya-higashi": {
+      "ok": true,
+      "status": 200
+    },
     "hyogo-nishinomiya-shiritsu": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-ono": {
       "ok": true,
       "status": 200
     },
@@ -1074,7 +1734,15 @@
       "ok": true,
       "status": 200
     },
+    "hyogo-shukugawa": {
+      "ok": true,
+      "status": 200
+    },
     "hyogo-suma-gakuen": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-sumoto": {
       "ok": true,
       "status": 200
     },
@@ -1082,7 +1750,15 @@
       "ok": true,
       "status": 200
     },
+    "hyogo-takigawa": {
+      "ok": true,
+      "status": 200
+    },
     "hyogo-takigawa-daini": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-tatsuno": {
       "ok": true,
       "status": 200
     },
@@ -1094,7 +1770,19 @@
       "ok": true,
       "status": 200
     },
+    "hyogo-toyooka": {
+      "ok": true,
+      "status": 200
+    },
     "hyogo-yumenodai": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-christ": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-fujishiro": {
       "ok": true,
       "status": 200
     },
@@ -1102,7 +1790,23 @@
       "ok": true,
       "status": 200
     },
+    "ibaraki-hitachi-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-hokota-ichi": {
+      "ok": true,
+      "status": 200
+    },
     "ibaraki-ibaraki": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-ishioka-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-iwase-nichidai": {
       "ok": true,
       "status": 200
     },
@@ -1110,7 +1814,19 @@
       "ok": true,
       "status": 200
     },
+    "ibaraki-kashima": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-kashima-gakuen": {
+      "ok": true,
+      "status": 200
+    },
     "ibaraki-kasumigaura": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-koga-san": {
       "ok": true,
       "status": 200
     },
@@ -1130,6 +1846,10 @@
       "ok": true,
       "status": 200
     },
+    "ibaraki-mito-keimei": {
+      "ok": true,
+      "status": 200
+    },
     "ibaraki-mito-ni": {
       "ok": true,
       "status": 200
@@ -1138,11 +1858,35 @@
       "ok": true,
       "status": 200
     },
+    "ibaraki-mito-san": {
+      "ok": true,
+      "status": 200
+    },
     "ibaraki-mito-shogyo": {
       "ok": true,
       "status": 200
     },
+    "ibaraki-mitsukaido-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-moriya": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-ota-ichi": {
+      "ok": true,
+      "status": 200
+    },
     "ibaraki-ryugasaki-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-sawa": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-seishin": {
       "ok": true,
       "status": 200
     },
@@ -1170,7 +1914,15 @@
       "ok": true,
       "status": 200
     },
+    "ibaraki-tsuchiura-ni": {
+      "ok": true,
+      "status": 200
+    },
     "ibaraki-tsuchiura-nichidai": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-tsukuba-shuei": {
       "ok": true,
       "status": 200
     },
@@ -1452,7 +2204,19 @@
       "ok": true,
       "status": 200
     },
+    "kanagawa-asamizodai": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-atsugi": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-chigasaki-hokuryo": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-chuo-yokohama": {
       "ok": true,
       "status": 200
     },
@@ -1464,11 +2228,27 @@
       "ok": true,
       "status": 200
     },
+    "kanagawa-hadano": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-hakuyo": {
       "ok": true,
       "status": 200
     },
     "kanagawa-hayato": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-hiratsuka-gakuen": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-hiratsuka-konan": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-hosei-kokusai": {
       "ok": true,
       "status": 200
     },
@@ -1480,11 +2260,19 @@
       "ok": true,
       "status": 200
     },
+    "kanagawa-ikuta": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-kamagaku": {
       "ok": true,
       "status": 200
     },
     "kanagawa-kamakura": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-kanto-gakuin": {
       "ok": true,
       "status": 200
     },
@@ -1516,12 +2304,56 @@
       "ok": true,
       "status": 200
     },
+    "kanagawa-koryo": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-kugenuma": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-nichidai": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-nichidai-fujisawa": {
       "ok": true,
       "status": 0,
       "note": "tls-chain"
     },
+    "kanagawa-odawara": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-oppama": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-sagamihara": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-shichirigahama": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-shinjo": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-shiritsu-kanazawa": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-shonan": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-shonan-koka": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-shoyo": {
       "ok": true,
       "status": 200
     },
@@ -1541,6 +2373,10 @@
       "ok": true,
       "status": 200
     },
+    "kanagawa-tachibana": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-tama": {
       "ok": true,
       "status": 200
@@ -1557,11 +2393,23 @@
       "ok": true,
       "status": 200
     },
+    "kanagawa-torei-fujisawa": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-yamate": {
       "ok": true,
       "status": 200
     },
+    "kanagawa-yamato": {
+      "ok": true,
+      "status": 200
+    },
     "kanagawa-yokohama-hs": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-yokohama-kokusai": {
       "ok": true,
       "status": 200
     },
@@ -1578,6 +2426,30 @@
       "status": 200
     },
     "kanagawa-yokohama-shogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-yokohama-soei": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-yokohama-suiryo": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-yokosuka": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-yokosuka-gakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-ysf": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-zama": {
       "ok": true,
       "status": 200
     },
@@ -2648,6 +3520,10 @@
       "ok": true,
       "status": 200
     },
+    "osaka-doshisha-kori": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-flex": {
       "ok": true,
       "status": 200
@@ -2657,6 +3533,10 @@
       "status": 200
     },
     "osaka-higashisumiyoshi": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-hirakata": {
       "ok": true,
       "status": 200
     },
@@ -2680,7 +3560,19 @@
       "ok": true,
       "status": 200
     },
+    "osaka-izumi": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-jogakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-josho": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-kaimei": {
       "ok": true,
       "status": 200
     },
@@ -2688,7 +3580,19 @@
       "ok": true,
       "status": 200
     },
+    "osaka-kandai-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-kandai-kotobu": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-kankura": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-kasugaoka": {
       "ok": true,
       "status": 200
     },
@@ -2704,6 +3608,10 @@
       "ok": true,
       "status": 200
     },
+    "osaka-kitasenri": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-kogei": {
       "ok": true,
       "status": 200
@@ -2712,11 +3620,47 @@
       "ok": true,
       "status": 200
     },
+    "osaka-kokusai": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-konko-osaka": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-kozu": {
       "ok": true,
       "status": 200
     },
+    "osaka-makino": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-meisei": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-mikunigaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-minoh": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-minoh-jiyu": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-mishima": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-momoyama": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-naniwa": {
       "ok": true,
       "status": 200
     },
@@ -2728,11 +3672,23 @@
       "ok": true,
       "status": 200
     },
+    "osaka-osaka": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-otani": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-otemae": {
       "ok": true,
       "status": 200
     },
     "osaka-otemon": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-otori": {
       "ok": true,
       "status": 200
     },
@@ -2756,7 +3712,23 @@
       "ok": true,
       "status": 200
     },
+    "osaka-senboku": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-senri": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-senyo": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-shijonawate": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-shimizudani": {
       "ok": true,
       "status": 200
     },
@@ -2764,7 +3736,15 @@
       "ok": true,
       "status": 200
     },
+    "osaka-sumiyoshi": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-tennoji": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-tezukayama-izumigaoka": {
       "ok": true,
       "status": 200
     },
@@ -2776,11 +3756,27 @@
       "ok": true,
       "status": 200
     },
+    "osaka-tondabayashi": {
+      "ok": true,
+      "status": 200
+    },
     "osaka-toyonaka": {
       "ok": true,
       "status": 200
     },
     "osaka-uenomiya": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-waseda": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-yamada": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-yao": {
       "ok": true,
       "status": 200
     },
@@ -2856,7 +3852,27 @@
       "ok": true,
       "status": 200
     },
+    "saitama-bunan": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-chichibu": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-dokkyo": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-eimei": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-fudooka": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-fukaya-daiichi": {
       "ok": true,
       "status": 200
     },
@@ -2864,7 +3880,19 @@
       "ok": true,
       "status": 200
     },
+    "saitama-honjo": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-honjo-higashi": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-hoshino": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-ina-gakuen": {
       "ok": true,
       "status": 200
     },
@@ -2880,11 +3908,19 @@
       "ok": true,
       "status": 200
     },
+    "saitama-kasukabe-higashi": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-kasukabe-kyoei": {
       "ok": true,
       "status": 200
     },
     "saitama-kawagoe": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-kawagoe-higashi": {
       "ok": true,
       "status": 200
     },
@@ -2900,7 +3936,31 @@
       "ok": true,
       "status": 200
     },
+    "saitama-kawaguchi-shiritsu": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-keio-shiki": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-konosu": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-koshigaya": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-koshigaya-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-koshigaya-minami": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-kuki": {
       "ok": true,
       "status": 200
     },
@@ -2908,11 +3968,39 @@
       "ok": true,
       "status": 200
     },
+    "saitama-kumagaya-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-matsuyama": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-nanryo": {
       "ok": true,
       "status": 200
     },
+    "saitama-nodai-san": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-omiya": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-omiya-kaisei": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-omiya-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-rikkyo-niiza": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-sakado": {
       "ok": true,
       "status": 200
     },
@@ -2924,7 +4012,15 @@
       "ok": true,
       "status": 200
     },
+    "saitama-sayamagaoka": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-seibo": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-seibu-bunri": {
       "ok": true,
       "status": 200
     },
@@ -2932,11 +4028,35 @@
       "ok": true,
       "status": 200
     },
+    "saitama-shiritsu-kawagoe": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-shiritsu-urawa": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-shochi-fukaya": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-shohei": {
       "ok": true,
       "status": 200
     },
+    "saitama-shukutoku-yono": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-shumei": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-soka": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-tokorozawa": {
       "ok": true,
       "status": 200
     },
@@ -2952,6 +4072,10 @@
       "ok": true,
       "status": 200
     },
+    "saitama-urawa-ichijo": {
+      "ok": true,
+      "status": 200
+    },
     "saitama-urawa-jitsugyo": {
       "ok": true,
       "status": 200
@@ -2961,6 +4085,10 @@
       "status": 200
     },
     "saitama-urawa-shogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-wako-kokusai": {
       "ok": true,
       "status": 200
     },
@@ -3100,7 +4228,23 @@
       "ok": true,
       "status": 200
     },
+    "shizuoka-fuji-higashi": {
+      "ok": true,
+      "status": 200
+    },
     "shizuoka-fujieda-higashi": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-fujieda-meisei": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-gyoshu": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-hamamatsu-gakugei": {
       "ok": true,
       "status": 200
     },
@@ -3116,6 +4260,10 @@
       "ok": true,
       "status": 200
     },
+    "shizuoka-hamamatsu-konan": {
+      "ok": true,
+      "status": 200
+    },
     "shizuoka-hamamatsu-minami": {
       "ok": true,
       "status": 200
@@ -3124,7 +4272,23 @@
       "ok": true,
       "status": 200
     },
+    "shizuoka-hamamatsu-nittai": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-hamamatsu-shiritsu": {
+      "ok": true,
+      "status": 200
+    },
     "shizuoka-hamamatsu-shogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-hamana": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-iwata-higashi": {
       "ok": true,
       "status": 200
     },
@@ -3132,11 +4296,31 @@
       "ok": true,
       "status": 200
     },
+    "shizuoka-johoku": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-kagaku-gijutsu": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-kakegawa-nishi": {
+      "ok": true,
+      "status": 200
+    },
     "shizuoka-kato-gakuen": {
       "ok": true,
       "status": 200
     },
+    "shizuoka-mishima-kita": {
+      "ok": true,
+      "status": 200
+    },
     "shizuoka-nichidai-mishima": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-nirayama": {
       "ok": true,
       "status": 200
     },
@@ -3148,7 +4332,19 @@
       "ok": true,
       "status": 200
     },
+    "shizuoka-salesio": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-seiryo": {
+      "ok": true,
+      "status": 200
+    },
     "shizuoka-seisei": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-shimada": {
       "ok": true,
       "status": 200
     },
@@ -3157,6 +4353,10 @@
       "status": 200
     },
     "shizuoka-shimizu-sakuragaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-shimoda": {
       "ok": true,
       "status": 200
     },
@@ -3173,6 +4373,14 @@
       "status": 200
     },
     "shizuoka-shizuoka-shiritsu": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-yaizu-chuo": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-yoshiwara": {
       "ok": true,
       "status": 200
     },
@@ -3305,11 +4513,35 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-adachi-gakuen": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-aoyama": {
       "ok": true,
       "status": 200
     },
+    "tokyo-aoyama-gakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-bunkyo": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-chihaya": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-chofu-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-chuo-fuzoku": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-denkidai": {
       "ok": true,
       "status": 200
     },
@@ -3318,6 +4550,10 @@
       "status": 200
     },
     "tokyo-geijutsu": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-hachioji-gakuen": {
       "ok": true,
       "status": 200
     },
@@ -3342,6 +4578,14 @@
       "status": 200
     },
     "tokyo-hirogaku": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-hosei": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-hoyu": {
       "ok": true,
       "status": 200
     },
@@ -3401,6 +4645,14 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-koganei-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-koho": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-kokubunji": {
       "ok": true,
       "status": 200
@@ -3413,11 +4665,23 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-komae": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-komagome": {
       "ok": true,
       "status": 200
     },
     "tokyo-komatsugawa": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-komazawa": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-kosei-gakuen": {
       "ok": true,
       "status": 200
     },
@@ -3437,6 +4701,10 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-meguro": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-meguro-nichidai": {
       "ok": true,
       "status": 200
@@ -3445,7 +4713,31 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-meidai-nakano": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-meiji-gakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-minamidaira": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-mita": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-musashino-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-naruse": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-nichidai-ni": {
       "ok": true,
       "status": 200
     },
@@ -3473,11 +4765,31 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-oizumi": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-ome-sogo": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-omori-gakuen": {
       "ok": true,
       "status": 200
     },
     "tokyo-otsuma": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-ryogoku": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-seikei": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-senshu-fuzoku": {
       "ok": true,
       "status": 200
     },
@@ -3497,11 +4809,31 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-shotoku-gakuen": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-showa": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-shoyo": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-shukutoku": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-shutoku": {
       "ok": true,
       "status": 200
     },
     "tokyo-suginami": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-sumidagawa": {
       "ok": true,
       "status": 200
     },
@@ -3517,6 +4849,10 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-tama-kagaku-gijutsu": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-tana": {
       "ok": true,
       "status": 200
@@ -3529,7 +4865,19 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-teikyo-daigaku": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-toa-gakuen": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-toho": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-tokai-takanawadai": {
       "ok": true,
       "status": 200
     },
@@ -3541,7 +4889,15 @@
       "ok": true,
       "status": 200
     },
+    "tokyo-toyo": {
+      "ok": true,
+      "status": 200
+    },
     "tokyo-toyotama": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-ueno": {
       "ok": true,
       "status": 200
     },
@@ -3554,6 +4910,10 @@
       "status": 200
     },
     "tokyo-waseda-jitsugyo": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-yasuda-gakuen": {
       "ok": true,
       "status": 200
     },

@@ -5,6 +5,7 @@ import { majorSeeds } from './majorSeeds'
 import { regionalSeeds } from './regionalSeeds'
 import { regionalSeeds2 } from './regionalSeeds2'
 import { regionalSeeds3 } from './regionalSeeds3'
+import { regionalSeeds4 } from './regionalSeeds4'
 import websites from './websites.json'
 import siteCheck from './site-check.json'
 
@@ -12,7 +13,7 @@ import siteCheck from './site-check.json'
  * 学校データ（偏差値・部活・寮など）を人の手で見直した日。
  * データを更新したら必ずここも更新する。結果画面に表示される。
  */
-export const DATA_UPDATED_AT = '2026-09-10'
+export const DATA_UPDATED_AT = '2026-09-11'
 
 /** 公式サイトの到達確認（scripts/check-sites.mjs が自動で書き換える） */
 export const SITE_CHECK = siteCheck as {
@@ -1961,7 +1962,7 @@ function withCoverage(list: School[]): School[] {
   return [...list, ...extras]
 }
 
-export const SCHOOLS: School[] = withCoverage([...seeds, ...dormSeeds, ...majorSeeds, ...regionalSeeds, ...regionalSeeds2, ...regionalSeeds3].map(toSchool))
+export const SCHOOLS: School[] = withCoverage([...seeds, ...dormSeeds, ...majorSeeds, ...regionalSeeds, ...regionalSeeds2, ...regionalSeeds3, ...regionalSeeds4].map(toSchool))
 
 /** 公式サイトの到達確認結果（無ければ未確認） */
 export function siteStatus(id: string): { ok: boolean; status: number } | undefined {
