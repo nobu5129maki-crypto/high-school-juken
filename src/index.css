@@ -260,12 +260,42 @@ button.on {
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .tag { font-size: 11px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; color: var(--ink-soft); }
 .model-tag { color: var(--try); border-color: var(--try); }
+.dorm-tag { color: var(--fit); border-color: var(--fit); background: rgba(31, 78, 121, 0.06); }
+.ok-tag { color: var(--safe); border-color: var(--safe); background: rgba(47, 111, 78, 0.08); font-weight: 700; }
+.warn-tag { color: var(--try); border-color: var(--try); background: rgba(180, 90, 26, 0.06); }
+
+.school-card-body { min-width: 0; }
+.school-card h3 a:hover { text-decoration: underline; }
+.links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.links .btn { text-decoration: none; }
+.compare-link { font-size: 12px; text-decoration: underline; color: var(--fit); }
+.compare th .compare-link { color: var(--gold-2); }
+
+.fresh {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--sage);
+  border-radius: 12px;
+  background: var(--white);
+  font-size: 14px;
+}
+.fresh.stale { border-left-color: var(--try); }
+.fresh-row { display: grid; grid-template-columns: 12px 1fr; gap: 10px; align-items: start; }
+.fresh-row b { font-weight: 700; font-size: 13px; }
+.fresh-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; }
+.fresh-dot.manual { background: var(--gold); }
+.fresh-dot.auto { background: var(--safe); box-shadow: 0 0 0 3px rgba(47, 111, 78, 0.18); }
+.fresh-note { margin: 0; }
+.fresh-compact { border-top: 1px dashed var(--line); padding-top: 8px; }
 
 .filters { display: flex; gap: 8px; overflow: auto; padding-bottom: 8px; }
 .filters button { white-space: nowrap; }
 
 .detail-hero { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; }
-.kv { display: grid; grid-template-columns: 7em 1fr; gap: 8px 12px; font-size: 14px; }
+.kv { display: grid; grid-template-columns: 9em 1fr; gap: 8px 12px; font-size: 14px; }
 .kv b { color: var(--ink-soft); font-weight: 500; }
 .advice { display: grid; gap: 10px; }
 .advice article { background: var(--paper-2); border-radius: 14px; padding: 12px 14px; }
@@ -296,6 +326,9 @@ button.on {
   .hero, .grid-3, .voices, .talk, .detail-hero { grid-template-columns: 1fr; }
   .hero-mark { justify-self: start; width: 120px; font-size: 56px; }
   .school-card { grid-template-columns: 72px 1fr; }
+  .school-card .score-mark { width: 72px; height: 72px; }
+  .school-card .score-mark b { font-size: 22px; }
   .hanko { grid-column: 2; justify-self: start; }
+  .fresh-row { grid-template-columns: 10px 1fr; }
   .choice-grid { grid-template-columns: 1fr; }
 }

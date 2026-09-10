@@ -20,6 +20,11 @@ export type Priority =
 
 export type Chance = '安全' | '適正' | 'チャレンジ' | '厳しい'
 
+/** 候補に含める地域の範囲 */
+export type AreaScope = '同じ都道府県' | '隣接県も含む' | '全国'
+/** 寮の希望 */
+export type DormPref = 'こだわらない' | '寮ありを優先' | '寮ありのみ'
+
 export type School = {
   id: string
   name: string
@@ -30,8 +35,20 @@ export type School = {
   course: string
   hensachi: number
   naishin: number
+  /** 県庁所在地付近からの通学目安（分）。寮利用時は参考値 */
   commuteMin: number
+  /** 最寄り駅（分かる場合のみ） */
+  station?: string
+  /** 最寄り駅からの徒歩・バス分（分かる場合のみ） */
+  stationMin?: number
+  /** 公式サイトURL（未設定なら検索リンクに切替） */
+  website?: string
+  /** 寮の有無 */
+  dorm?: boolean
+  /** 寮の補足（対象・条件など） */
+  dormNote?: string
   tuition: TuitionBand
+  /** 公式サイト等で存在を確認できた部活動（一部のみ掲載） */
   clubs: string[]
   features: string[]
   atmosphere: string[]
@@ -51,10 +68,17 @@ export type School = {
 export type Profile = {
   role: Role
   prefecture: string
+  /** 候補に含める地域の範囲 */
+  areaScope: AreaScope
+  /** 自宅の最寄り駅（乗換検索リンクに使用） */
+  homeStation: string
   grade: Grade
   naishin: number
   hensachi: number
+  /** 片道の通学時間上限（分）。0 は制限なし */
   commuteMax: number
+  /** 寮の希望 */
+  dorm: DormPref
   kind: KindPref
   gender: GenderPref
   priorities: Priority[]
@@ -64,6 +88,8 @@ export type Profile = {
   club: string
 }
 
+export type ClubCheck = '確認済み' | '未確認' | '希望なし'
+
 export type MatchResult = {
   school: School
   score: number
@@ -71,7 +97,40 @@ export type MatchResult = {
   gap: number
   reasons: string[]
   cautions: string[]
+  /** 希望した部活動が掲載データで確認できたか */
+  clubCheck: ClubCheck
 }
+
+export const AREA_SCOPES: AreaScope[] = ['同じ都道府県', '隣接県も含む', '全国']
+export const DORM_PREFS: DormPref[] = ['こだわらない', '寮ありを優先', '寮ありのみ']
+/** 通学時間の選択肢（分）。0 は制限なし */
+export const COMMUTE_OPTIONS = [30, 45, 60, 90, 120, 0] as const
+
+/** 部活動の入力候補 */
+export const CLUB_SUGGESTIONS = [
+  '野球',
+  'サッカー',
+  'バスケットボール',
+  'バレーボール',
+  'テニス',
+  '陸上',
+  '卓球',
+  'バドミントン',
+  '剣道',
+  '柔道',
+  '弓道',
+  'ラグビー',
+  '水泳',
+  'ダンス',
+  '吹奏楽',
+  '合唱',
+  '美術',
+  '書道',
+  '演劇',
+  '軽音',
+  '科学',
+  'ロボコン',
+]
 
 export const PRIORITIES: Priority[] = [
   '進学実績',
@@ -137,10 +196,13 @@ export const PREFECTURES = [
 export const EMPTY_PROFILE: Profile = {
   role: 'together',
   prefecture: '東京都',
+  areaScope: '隣接県も含む',
+  homeStation: '',
   grade: '中3',
   naishin: 32,
   hensachi: 55,
   commuteMax: 60,
+  dorm: 'こだわらない',
   kind: 'どちらも',
   gender: 'こだわらない',
   priorities: ['校風', '通学'],

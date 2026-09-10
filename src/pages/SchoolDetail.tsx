@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import DataFreshness from '../components/DataFreshness'
+import SchoolLinks from '../components/SchoolLinks'
 import { getSchool } from '../data/schools'
-import { matchSchool } from '../lib/matching'
+import { checkClub, clubLabel, matchSchool } from '../lib/matching'
 import { loadCompare, loadFavorites, loadOrEmpty, toggleCompare, toggleFavorite } from '../lib/storage'
 
 export default function SchoolDetail() {
@@ -15,6 +17,9 @@ export default function SchoolDetail() {
 
   if (!school) return <p>学校が見つかりません。</p>
 
+  const club = clubLabel(profile.club)
+  const clubCheck = checkClub(school, club)
+
   return (
     <div>
       <p className="tiny"><Link to="/kekka">結果へ戻る</Link></p>
@@ -24,6 +29,13 @@ export default function SchoolDetail() {
           <h1>{school.name}</h1>
           <p className="lead">{school.description}</p>
           {school.model ? <p className="tiny">このカードは地域の中堅・実業を合成したモデル校です。</p> : null}
+          <div className="tags">
+            {school.dorm ? <span className="tag dorm-tag">寮あり</span> : null}
+            {club ? (
+              clubCheck === '確認済み' ? <span className="tag ok-tag">{club}部 確認済み</span> : <span className="tag warn-tag">{club}部 未確認</span>
+            ) : null}
+          </div>
+          <SchoolLinks school={school} profile={profile} size="normal" />
         </div>
         {match ? (
           <div className="score-mark">
@@ -50,14 +62,31 @@ export default function SchoolDetail() {
           <b>学科</b><span>{school.course}</span>
           <b>偏差値目安</b><span>{school.hensachi}</span>
           <b>内申目安</b><span>{school.naishin} / 45</span>
-          <b>通学</b><span>約{school.commuteMin}分（県庁所在地付近からの目安）</span>
+          <b>最寄り駅</b>
+          <span>
+            {school.station ? `${school.station}駅から約${school.stationMin}分` : '公式サイトのアクセス案内で確認してください'}
+            {profile.homeStation.trim() ? '　（上の「乗換検索」で自宅の最寄り駅からの所要時間を実測できます）' : '　（診断で自宅の最寄り駅を入れると乗換検索リンクが出ます）'}
+          </span>
+          <b>通学目安</b><span>約{school.commuteMin}分（県庁所在地付近からの目安）</span>
+          <b>寮</b>
+          <span>
+            {school.dorm ? `あり。${school.dormNote ?? ''} 費用・対象は募集要項で確認。` : '掲載データでは確認できていません（公式サイトで確認）'}
+          </span>
           <b>学費</b><span>{school.tuition}</span>
           <b>入試</b><span>{school.examStyle}　{school.examSeason}</span>
           <b>進学・進路</b><span>{school.university}</span>
-          <b>部活動例</b><span>{school.clubs.join('、')}</span>
+          <b>部活動（確認済み）</b>
+          <span>
+            {school.clubs.join('、')}
+            <span className="tiny" style={{ display: 'block' }}>掲載は一部です。ここに無い部活は「なし」ではなく「未確認」。全一覧は公式サイトで。</span>
+          </span>
           <b>校風</b><span>{school.atmosphere.join('／')}</span>
         </div>
       </section>
+
+      <div style={{ marginTop: 14 }}>
+        <DataFreshness compact />
+      </div>
 
       {match ? (
         <section className="grid-2" style={{ marginTop: 14 }}>

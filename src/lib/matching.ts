@@ -1,5 +1,5 @@
-import { SCHOOLS } from '../data/schools'
-import type { Chance, MatchResult, Profile, School } from '../types'
+import { DATA_UPDATED_AT, SCHOOLS } from '../data/schools'
+import type { Chance, ClubCheck, MatchResult, Profile, School } from '../types'
 
 const NEAR: Record<string, string[]> = {
   東京都: ['神奈川県', '埼玉県', '千葉県'],
@@ -38,10 +38,55 @@ function hensachiFit(gap: number) {
   return { pts: 28, note: '現時点では厳しい帯。今は基礎固めと、行ける学校の中の本命探しを。' }
 }
 
+/** 希望の部活が掲載データで確認できるか */
+export function checkClub(school: School, club: string): ClubCheck {
+  const want = normalizeClub(club)
+  if (!want) return '希望なし'
+  const hit = school.clubs.some((c) => {
+    const have = normalizeClub(c)
+    return have.includes(want) || want.includes(have)
+  })
+  return hit ? '確認済み' : '未確認'
+}
+
+/** 画面表示用の部活名（末尾の「部」を除いた形）。空なら '' */
+export function clubLabel(club: string) {
+  return club.trim().replace(/部$/, '')
+}
+
+/** 「野球部」「硬式野球」「バスケ」などの表記ゆれを吸収する */
+function normalizeClub(s: string) {
+  let v = s.trim().replace(/\s+/g, '').replace(/部$/, '')
+  v = v.replace(/^硬式|^軟式|^男子|^女子/, '')
+  const alias: Record<string, string> = {
+    バスケ: 'バスケットボール',
+    バレー: 'バレーボール',
+    バド: 'バドミントン',
+    ブラバン: '吹奏楽',
+    ラグビーフットボール: 'ラグビー',
+    陸上競技: '陸上',
+    軟式野球: '野球',
+  }
+  return alias[v] ?? v
+}
+
+/** 寮を使う前提で見る学校か（寮があり、本人が寮を選択肢にしている） */
+export function usesDorm(school: School, profile: Profile) {
+  return Boolean(school.dorm) && profile.dorm !== 'こだわらない'
+}
+
 export function matchSchool(school: School, profile: Profile): MatchResult | null {
   const dist = distance(profile.prefecture, school.prefecture)
-  if (dist === 'far') return null
+  const dormOk = usesDorm(school, profile)
+
+  // 地域範囲。寮を使うなら距離の制限は外す
+  if (!dormOk) {
+    if (profile.areaScope === '同じ都道府県' && dist !== 'same') return null
+    if (profile.areaScope === '隣接県も含む' && dist === 'far') return null
+  }
   if (school.model && dist !== 'same') return null
+
+  if (profile.dorm === '寮ありのみ' && !school.dorm) return null
 
   if (profile.gender !== 'こだわらない' && school.gender !== '共学' && school.gender !== profile.gender) {
     return null
@@ -58,9 +103,21 @@ export function matchSchool(school: School, profile: Profile): MatchResult | nul
   if (dist === 'same') {
     score += 24
     reasons.push(`${school.prefecture}の学校で、生活圏に合っています。`)
-  } else {
+  } else if (dormOk) {
+    score += 12
+    reasons.push(`${school.prefecture}の学校ですが寮があり、全国から通えます。`)
+  } else if (dist === 'near') {
     score -= 6
     cautions.push('隣接地域の学校です。通学定期と帰宅時間を必ず実測してください。')
+  } else {
+    score -= 14
+    cautions.push('遠方の学校です。通学は現実的か、寮・下宿・転居の有無を家族で確認してください。')
+  }
+
+  if (school.dorm && profile.dorm !== 'こだわらない') {
+    if (profile.dorm === '寮ありを優先') score += 10
+    const note = (school.dormNote ?? '詳細は公式サイトで確認').replace(/。$/, '')
+    reasons.push(`寮があります（${note}）。`)
   }
 
   const gap = profile.hensachi - school.hensachi
@@ -81,7 +138,13 @@ export function matchSchool(school: School, profile: Profile): MatchResult | nul
     cautions.push('内申が目安より低め。推薦や内申比重の高い方式は慎重に。')
   }
 
-  if (school.commuteMin <= profile.commuteMax - 10) {
+  if (dormOk) {
+    score += 12
+    reasons.push('寮を使えば通学時間の制約はありません。帰省の頻度と費用を先に確認して。')
+  } else if (profile.commuteMax === 0) {
+    score += 9
+    reasons.push('通学時間は制限なしで探しています。乗換案内で実測を。')
+  } else if (school.commuteMin <= profile.commuteMax - 10) {
     score += 14
     reasons.push(`通学目安${school.commuteMin}分で、希望時間に余裕があります。`)
   } else if (school.commuteMin <= profile.commuteMax) {
@@ -128,12 +191,14 @@ export function matchSchool(school: School, profile: Profile): MatchResult | nul
     cautions.push('通い方が特殊です。全日制が合う人には、まず通常の学校を見てください。')
   }
 
-  if (profile.club) {
-    const hit = school.clubs.some((c) => c.includes(profile.club) || profile.club.includes(c))
-    if (hit) {
-      score += 8
-      reasons.push(`${profile.club}を続けられそうな部活動があります。`)
-    }
+  const clubCheck = checkClub(school, profile.club)
+  const cl = clubLabel(profile.club)
+  if (clubCheck === '確認済み') {
+    score += 10
+    reasons.push(`${cl}部の存在を公式情報で確認済みです（${DATA_UPDATED_AT}時点）。`)
+  } else if (clubCheck === '未確認') {
+    score -= 6
+    cautions.push(`${cl}部があるかは未確認です。公式サイトの部活動一覧で必ず確認を。`)
   }
 
   const wantsVocational =
@@ -156,7 +221,26 @@ export function matchSchool(school: School, profile: Profile): MatchResult | nul
     gap,
     reasons: reasons.slice(0, 4),
     cautions: cautions.slice(0, 3),
+    clubCheck,
   }
+}
+
+/**
+ * 自宅の最寄り駅から学校までの乗換検索リンク（Google マップ・公共交通）。
+ * 学校側の最寄り駅が分かっていればそこを目的地に、無ければ学校名で検索する。
+ */
+export function routeUrl(school: School, homeStation: string) {
+  const origin = homeStation.trim()
+  if (!origin) return null
+  const originQ = /駅$/.test(origin) ? origin : `${origin}駅`
+  const dest = school.station ? `${school.station.split('・')[0]}駅 ${school.prefecture}` : `${school.name} ${school.prefecture}${school.city}`
+  const p = new URLSearchParams({ api: '1', origin: originQ, destination: dest, travelmode: 'transit' })
+  return `https://www.google.com/maps/dir/?${p.toString()}`
+}
+
+/** 公式サイトが未登録の学校向けの検索リンク */
+export function searchUrl(school: School, extra = '公式サイト') {
+  return `https://www.google.com/search?q=${encodeURIComponent(`${school.name} ${school.prefecture} ${extra}`)}`
 }
 
 export function rankSchools(profile: Profile): MatchResult[] {

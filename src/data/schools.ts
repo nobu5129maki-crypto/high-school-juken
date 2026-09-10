@@ -1,30 +1,130 @@
-import type { Priority, School, SchoolKind, Gender, TuitionBand } from '../types'
+import type { School } from '../types'
+import type { Seed } from './seed'
+import { dormSeeds } from './dormSchools'
+import websites from './websites.json'
+import siteCheck from './site-check.json'
 
-type Seed = {
-  id: string
-  name: string
-  prefecture: string
-  city: string
-  kind: SchoolKind
-  gender?: Gender
-  course: string
-  hensachi: number
-  commuteMin: number
-  tuition?: TuitionBand
-  clubs: string[]
-  features: string[]
-  atmosphere: string[]
-  tags: Priority[]
-  university: string
-  examStyle: string
-  examSeason: string
-  dateKey: string
-  lifestyle?: School['lifestyle']
-  description: string
-  teacherNote: string
-  jukuNote: string
-  studentNote: string
-  model?: boolean
+/**
+ * 学校データ（偏差値・部活・寮など）を人の手で見直した日。
+ * データを更新したら必ずここも更新する。結果画面に表示される。
+ */
+export const DATA_UPDATED_AT = '2026-09-10'
+
+/** 公式サイトの到達確認（scripts/check-sites.mjs が自動で書き換える） */
+export const SITE_CHECK = siteCheck as {
+  checkedAt: string
+  total: number
+  ok: number
+  results: Record<string, { ok: boolean; status: number }>
+}
+
+const WEBSITES = websites as Record<string, string>
+
+/**
+ * 硬式野球部の存在を公式サイト等で確認できた学校。
+ * ここに無い学校は「野球部なし」ではなく「未確認」として扱う（結果画面で区別表示）。
+ */
+const BASEBALL_CONFIRMED = new Set([
+  'hokkaido-sapporo-minami',
+  'hokkaido-sapporo-kogyo',
+  'iwate-morioka-ichi',
+  'miyagi-sendai-ichi',
+  'miyagi-sendai-kogyo',
+  'akita-akita',
+  'fukushima-asaka',
+  'ibaraki-mito-ichi',
+  'tochigi-utsunomiya',
+  'gunma-maebashi',
+  'saitama-urawa',
+  'saitama-omiya',
+  'saitama-kawagoe-sogo',
+  'chiba-chiba',
+  'chiba-shibumaku',
+  'tokyo-hibiya',
+  'tokyo-nishi',
+  'tokyo-kunitachi',
+  'tokyo-kaisei',
+  'kanagawa-shonan',
+  'kanagawa-kogyo',
+  'toyama-chubu',
+  'ishikawa-izumigaoka',
+  'fukui-fujishima',
+  'yamanashi-kofu-ichi',
+  'nagano-fukashi',
+  'gifu-gifu',
+  'shizuoka-hamamatsu-kita',
+  'aichi-asakagaoka',
+  'mie-tsu',
+  'shiga-hikone-higashi',
+  'kyoto-horikawa',
+  'kyoto-sagano',
+  'kyoto-rakunan',
+  'osaka-kitano',
+  'osaka-tennoji',
+  'hyogo-kobe',
+  'hyogo-nagata',
+  'nara-nara',
+  'tottori-nishi',
+  'shimane-izumo',
+  'okayama-asahi',
+  'hiroshima-motomachi',
+  'yamaguchi-yamaguchi',
+  'kagawa-takamatsu',
+  'kochi-otemae',
+  'fukuoka-shuyukan',
+  'fukuoka-fukuoka',
+  'saga-chienkan',
+  'nagasaki-nishi',
+  'kumamoto-kumamoto',
+  'oita-uenoaka',
+  'miyazaki-omiya',
+  'kagoshima-tsurumaru',
+  'okinawa-shuri',
+  'tokyo-tana',
+  'tokyo-kasai-minami',
+  'tokyo-jissen',
+  'kanagawa-yokohama-mid',
+])
+
+/** 最寄り駅（公式サイトのアクセス案内で確認できたもののみ） */
+const STATIONS: Record<string, { station: string; min: number }> = {
+  'hokkaido-sapporo-minami': { station: '中島公園', min: 12 },
+  'miyagi-sendai-ichi': { station: '連坊', min: 5 },
+  'ibaraki-mito-ichi': { station: '水戸', min: 20 },
+  'saitama-urawa': { station: '北浦和', min: 10 },
+  'saitama-omiya': { station: 'さいたま新都心', min: 10 },
+  'chiba-chiba': { station: '西千葉', min: 8 },
+  'chiba-shibumaku': { station: '海浜幕張', min: 10 },
+  'tokyo-hibiya': { station: '永田町・赤坂見附', min: 5 },
+  'tokyo-nishi': { station: '久我山', min: 10 },
+  'tokyo-kunitachi': { station: '国立', min: 15 },
+  'tokyo-koyama': { station: '武蔵小山', min: 1 },
+  'tokyo-geijutsu': { station: '曙橋', min: 5 },
+  'tokyo-kaisei': { station: '西日暮里', min: 1 },
+  'tokyo-toshimagaoka': { station: '池袋', min: 7 },
+  'tokyo-hirogaku': { station: '広尾', min: 1 },
+  'tokyo-tana': { station: '田無', min: 15 },
+  'tokyo-jissen': { station: '中野', min: 5 },
+  'kanagawa-suiran': { station: '三ツ沢下町', min: 15 },
+  'kanagawa-shonan': { station: '藤沢本町', min: 7 },
+  'kanagawa-kogyo': { station: '東神奈川', min: 10 },
+  'kanagawa-yokohama-mid': { station: '横浜', min: 10 },
+  'nagano-fukashi': { station: '北松本', min: 21 },
+  'mie-tsu': { station: '津新町', min: 10 },
+  'aichi-asakagaoka': { station: '清水', min: 3 },
+  'aichi-okazaki': { station: '東岡崎', min: 15 },
+  'kyoto-horikawa': { station: '二条', min: 8 },
+  'kyoto-rakunan': { station: '東寺', min: 5 },
+  'osaka-kitano': { station: '十三', min: 7 },
+  'osaka-tennoji': { station: '寺田町', min: 5 },
+  'osaka-kogei': { station: '文の里', min: 3 },
+  'osaka-flex': { station: '西九条', min: 8 },
+  'hyogo-kobe': { station: '王子公園', min: 15 },
+  'hiroshima-motomachi': { station: '城北', min: 3 },
+  'fukuoka-shuyukan': { station: '西新', min: 5 },
+  'fukuoka-fukuoka': { station: '千代県庁口', min: 5 },
+  'nagasaki-nishi': { station: '浦上', min: 5 },
+  'oita-uenoaka': { station: '古国府', min: 6 },
 }
 
 function naishinFromHensachi(h: number) {
@@ -41,12 +141,19 @@ function toSchool(s: Seed): School {
   const tuition =
     s.tuition ??
     (s.kind === '私立' ? (s.hensachi >= 70 ? '私立高め' : '私立標準') : '公立水準')
+  const clubs = [...s.clubs]
+  if (BASEBALL_CONFIRMED.has(s.id) && !clubs.some((c) => c.includes('野球'))) clubs.push('硬式野球')
+  const st = STATIONS[s.id]
   return {
     gender: s.gender ?? '共学',
     naishin: naishinFromHensachi(s.hensachi),
     tuition,
     lifestyle: s.lifestyle ?? '標準',
+    website: s.model ? undefined : WEBSITES[s.id],
+    station: st?.station,
+    stationMin: st?.min,
     ...s,
+    clubs,
   }
 }
 
@@ -1117,7 +1224,7 @@ const seeds: Seed[] = [
   },
   {
     id: 'osaka-kogei',
-    name: '大阪市立工芸高等学校',
+    name: '大阪府立工芸高等学校',
     prefecture: '大阪府',
     city: '大阪市',
     kind: '公立',
@@ -1603,7 +1710,7 @@ const seeds: Seed[] = [
     id: 'okinawa-kaiho',
     name: '開邦高等学校',
     prefecture: '沖縄県',
-    city: '沖縄市',
+    city: '南風原町',
     kind: '公立',
     course: '普通科・芸術科',
     hensachi: 67,
@@ -1784,7 +1891,9 @@ function withCoverage(list: School[]): School[] {
   const extras: School[] = []
   const prefs = [...new Set(list.map((s) => s.prefecture))]
   for (const pref of prefs) {
-    const local = list.filter((s) => s.prefecture === pref)
+    // 寮のある私立は全国向けの候補なので、地域の中堅・実業校の有無判定からは外す
+    const local = list.filter((s) => s.prefecture === pref && !s.dorm)
+    if (local.length === 0) continue
     const city = local[0].city
     const dateKey = local.find((s) => s.kind === '公立')?.dateKey ?? 'public-mar'
     const shortCity = city.replace(/[市区]$/, '')
@@ -1846,7 +1955,12 @@ function withCoverage(list: School[]): School[] {
   return [...list, ...extras]
 }
 
-export const SCHOOLS: School[] = withCoverage(seeds.map(toSchool))
+export const SCHOOLS: School[] = withCoverage([...seeds, ...dormSeeds].map(toSchool))
+
+/** 公式サイトの到達確認結果（無ければ未確認） */
+export function siteStatus(id: string): { ok: boolean; status: number } | undefined {
+  return SITE_CHECK.results[id]
+}
 
 export function getSchool(id: string) {
   return SCHOOLS.find((s) => s.id === id)

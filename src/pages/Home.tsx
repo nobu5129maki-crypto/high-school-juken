@@ -11,6 +11,7 @@ export default function Home() {
           <h1>あなたに<em>合う</em>高等学校が、<br />見つかる。</h1>
           <p className="lead">
             偏差値だけで決めると、入学後に苦しくなります。内申、通学、校風、部活、学費、将来のぼんやりした希望まで含めて、親子で「通う3年間」を選べるようにしました。
+            地域は同じ県・隣接県・全国から選べ、寮のある学校も候補にできます。結果には各校の公式サイトと、自宅の最寄り駅からの乗換検索リンクが付きます。
           </p>
           <div className="row">
             <Link className="btn btn-primary" to="/shindan">{started ? '診断を見直す' : '3分で診断をはじめる'}</Link>

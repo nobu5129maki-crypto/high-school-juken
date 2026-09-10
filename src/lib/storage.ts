@@ -15,7 +15,10 @@ function readJson<T>(key: string, fallback: T): T {
 }
 
 export function loadProfile(): Profile | null {
-  return readJson<Profile | null>(PROFILE, null)
+  const raw = readJson<Partial<Profile> | null>(PROFILE, null)
+  if (!raw) return null
+  // 旧バージョンで保存したプロフィールに新しい項目（地域範囲・寮・最寄り駅）が無くても動くよう既定値で補う
+  return { ...EMPTY_PROFILE, ...raw }
 }
 
 export function saveProfile(profile: Profile) {

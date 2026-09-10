@@ -1,0 +1,447 @@
+{
+  "checkedAt": "2026-09-10T11:00:06.067Z",
+  "total": 110,
+  "ok": 110,
+  "results": {
+    "hokkaido-sapporo-minami": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-sapporo-kogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "aomori-aomori": {
+      "ok": true,
+      "status": 200
+    },
+    "iwate-morioka-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "miyagi-sendai-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "miyagi-sendai-kogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "akita-akita": {
+      "ok": true,
+      "status": 200
+    },
+    "yamagata-higashi": {
+      "ok": true,
+      "status": 200
+    },
+    "fukushima-asaka": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-mito-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "tochigi-utsunomiya": {
+      "ok": true,
+      "status": 200
+    },
+    "gunma-maebashi": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-urawa": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-omiya": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-kawagoe-sogo": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-chiba": {
+      "ok": true,
+      "status": 200
+    },
+    "chiba-shibumaku": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-hibiya": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-kunitachi": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-koyama": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-geijutsu": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-nogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-kaisei": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-toshimagaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-hirogaku": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-suiran": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-shonan": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-kogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "niigata-niigata": {
+      "ok": true,
+      "status": 200
+    },
+    "toyama-chubu": {
+      "ok": true,
+      "status": 200
+    },
+    "ishikawa-izumigaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "fukui-fujishima": {
+      "ok": true,
+      "status": 200
+    },
+    "yamanashi-kofu-ichi": {
+      "ok": true,
+      "status": 200
+    },
+    "nagano-fukashi": {
+      "ok": true,
+      "status": 200
+    },
+    "gifu-gifu": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-shizuoka": {
+      "ok": true,
+      "status": 200
+    },
+    "shizuoka-hamamatsu-kita": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-asakagaoka": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-okazaki": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-kogyo": {
+      "ok": true,
+      "status": 200
+    },
+    "mie-tsu": {
+      "ok": true,
+      "status": 200
+    },
+    "shiga-hikone-higashi": {
+      "ok": true,
+      "status": 200
+    },
+    "kyoto-horikawa": {
+      "ok": true,
+      "status": 200
+    },
+    "kyoto-sagano": {
+      "ok": true,
+      "status": 200
+    },
+    "kyoto-rakunan": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-kitano": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-tennoji": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-kogei": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-kobe": {
+      "ok": true,
+      "status": 200
+    },
+    "hyogo-nagata": {
+      "ok": true,
+      "status": 200
+    },
+    "nara-nara": {
+      "ok": true,
+      "status": 200
+    },
+    "wakayama-toin": {
+      "ok": true,
+      "status": 200
+    },
+    "tottori-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "shimane-izumo": {
+      "ok": true,
+      "status": 200
+    },
+    "okayama-asahi": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-motomachi": {
+      "ok": true,
+      "status": 200
+    },
+    "yamaguchi-yamaguchi": {
+      "ok": true,
+      "status": 200
+    },
+    "tokushima-jonan": {
+      "ok": true,
+      "status": 200
+    },
+    "kagawa-takamatsu": {
+      "ok": true,
+      "status": 200
+    },
+    "ehime-matsuyama-higashi": {
+      "ok": true,
+      "status": 200
+    },
+    "kochi-otemae": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-shuyukan": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-fukuoka": {
+      "ok": true,
+      "status": 200
+    },
+    "saga-chienkan": {
+      "ok": true,
+      "status": 200
+    },
+    "nagasaki-nishi": {
+      "ok": true,
+      "status": 200
+    },
+    "kumamoto-kumamoto": {
+      "ok": true,
+      "status": 200
+    },
+    "oita-uenoaka": {
+      "ok": true,
+      "status": 200
+    },
+    "miyazaki-omiya": {
+      "ok": true,
+      "status": 200
+    },
+    "kagoshima-tsurumaru": {
+      "ok": true,
+      "status": 200
+    },
+    "okinawa-kaiho": {
+      "ok": true,
+      "status": 200
+    },
+    "okinawa-shuri": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-tana": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-kasai-minami": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-jissen": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-yokohama-mid": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-flex": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-unit": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-hakodate-lasalle": {
+      "ok": true,
+      "status": 200
+    },
+    "hokkaido-komadai-tomakomai": {
+      "ok": true,
+      "status": 200
+    },
+    "aomori-yamada": {
+      "ok": true,
+      "status": 200
+    },
+    "iwate-hanamaki-higashi": {
+      "ok": true,
+      "status": 200
+    },
+    "miyagi-sendai-ikuei": {
+      "ok": true,
+      "status": 200
+    },
+    "fukushima-seiko-gakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "ibaraki-joso-gakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-shumei": {
+      "ok": true,
+      "status": 200
+    },
+    "saitama-urawa-gakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-icu": {
+      "ok": true,
+      "status": 200
+    },
+    "tokyo-nichidai-san": {
+      "ok": true,
+      "status": 200
+    },
+    "kanagawa-yokohama-hs": {
+      "ok": true,
+      "status": 200
+    },
+    "nagano-saku-chosei": {
+      "ok": true,
+      "status": 200
+    },
+    "ishikawa-seiryo": {
+      "ok": true,
+      "status": 200
+    },
+    "yamanashi-gakuin": {
+      "ok": true,
+      "status": 200
+    },
+    "aichi-meiden": {
+      "ok": true,
+      "status": 200
+    },
+    "kyoto-heian": {
+      "ok": true,
+      "status": 200
+    },
+    "osaka-toin": {
+      "ok": true,
+      "status": 200
+    },
+    "nara-nishiyamato": {
+      "ok": true,
+      "status": 200
+    },
+    "nara-tenri": {
+      "ok": true,
+      "status": 200
+    },
+    "okayama-hakuryo": {
+      "ok": true,
+      "status": 200
+    },
+    "hiroshima-koryo": {
+      "ok": true,
+      "status": 200
+    },
+    "kagawa-jinsei": {
+      "ok": true,
+      "status": 200
+    },
+    "kochi-meitoku": {
+      "ok": true,
+      "status": 200
+    },
+    "ehime-aiko": {
+      "ok": true,
+      "status": 200
+    },
+    "fukuoka-ohori": {
+      "ok": true,
+      "status": 200
+    },
+    "saga-waseda": {
+      "ok": true,
+      "status": 200
+    },
+    "nagasaki-seiun": {
+      "ok": true,
+      "status": 200
+    },
+    "oita-meiho": {
+      "ok": true,
+      "status": 200
+    },
+    "kagoshima-lasalle": {
+      "ok": true,
+      "status": 200
+    },
+    "kagoshima-kamimura": {
+      "ok": true,
+      "status": 200
+    },
+    "okinawa-shogaku": {
+      "ok": true,
+      "status": 200
+    }
+  }
+}

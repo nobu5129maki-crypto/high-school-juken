@@ -28,7 +28,11 @@ export default function Strategy() {
           <article className="panel" key={p.slot + p.match.school.id}>
             <div className="tiny">{p.slot}　{p.match.chance}　フィット{p.match.score}</div>
             <h3><Link to={`/school/${p.match.school.id}`}>{p.match.school.name}</Link></h3>
-            <p className="muted">{p.match.school.kind}　{p.match.school.examSeason}　通学約{p.match.school.commuteMin}分</p>
+            <p className="muted">
+              {p.match.school.kind}　{p.match.school.examSeason}　
+              {p.match.school.dorm ? '寮あり' : `通学約${p.match.school.commuteMin}分`}
+              {p.match.school.website ? <>　<a href={p.match.school.website} target="_blank" rel="noopener noreferrer" className="compare-link">公式サイト ↗</a></> : null}
+            </p>
             <p>{p.match.reasons[0]}</p>
           </article>
         ))}
