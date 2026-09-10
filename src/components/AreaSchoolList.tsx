@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BASE_META, baseKey, loadBaseSchools, type BaseSchool } from '../data/baseSchools'
+import { BASE_META, loadBaseSchools, matchCurated, type BaseSchool } from '../data/baseSchools'
 import { NEIGHBORS } from '../data/prefectures'
 import { SCHOOLS } from '../data/schools'
 import { clubLabel, routeUrl, searchUrl } from '../lib/matching'
@@ -14,9 +14,8 @@ function fmt(iso: string) {
   return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`
 }
 
-/** 手入力の詳細データがある学校を、文科省一覧の校名と突き合わせるための索引 */
-const CURATED = new Map<string, string>()
-for (const s of SCHOOLS) if (!s.model) CURATED.set(baseKey(s.prefecture, s.name), s.id)
+/** 手入力の詳細データがある学校（モデル校を除く） */
+const CURATED_REFS = SCHOOLS.filter((s) => !s.model).map((s) => ({ id: s.id, name: s.name, prefecture: s.prefecture, city: s.city }))
 
 /**
  * 文部科学省の学校コード一覧に基づく「この地域のすべての高校」。
@@ -44,6 +43,8 @@ export default function AreaSchoolList({ profile }: { profile: Profile }) {
   }, [profile.areaScope, profile.prefecture])
 
   const inScope = useMemo(() => (all ?? []).filter((s) => !prefs || prefs.has(s.pref)), [all, prefs])
+  /** 学校コード → 詳細データの id（文科省一覧の1校につき最大1件） */
+  const curatedByCode = useMemo(() => (all ? matchCurated(all, CURATED_REFS) : new Map<string, string>()), [all])
   const club = clubLabel(profile.club)
   const home = profile.homeStation.trim()
 
@@ -52,7 +53,7 @@ export default function AreaSchoolList({ profile }: { profile: Profile }) {
     return inScope.filter((s) => (kind === 'すべて' || s.kind === kind) && (!needle || `${s.name}${s.city}${s.pref}`.includes(needle)))
   }, [inScope, kind, q])
 
-  const curatedCount = inScope.filter((s) => CURATED.has(baseKey(s.pref, s.name))).length
+  const curatedCount = inScope.filter((s) => curatedByCode.has(s.code)).length
   const scopeLabel = profile.areaScope === '全国' ? '全国' : profile.areaScope === '隣接県も含む' ? `${profile.prefecture}と隣接県` : profile.prefecture
 
   return (
@@ -87,7 +88,7 @@ export default function AreaSchoolList({ profile }: { profile: Profile }) {
           <p className="tiny">{shown.length}校</p>
           <ul className="area-items">
             {shown.slice(0, limit).map((s) => {
-              const curatedId = CURATED.get(baseKey(s.pref, s.name))
+              const curatedId = curatedByCode.get(s.code)
               const target = { name: s.name, prefecture: s.pref, city: s.city }
               const route = home ? routeUrl(target, home) : null
               return (

@@ -34,9 +34,9 @@ function isNetworkError(r) {
 }
 
 // 証明書チェーンの不備など、Node の fetch では失敗するがブラウザでは開けるTLSエラーか
-// （中間証明書の未配信・古い鍵長など。サイト自体は存在し、ブラウザは補完して表示できる）
+// （中間証明書の未配信・古い鍵長・古いTLS再交渉設定など。サイト自体は存在し、ブラウザは補完して表示できる）
 function isTlsChainError(r) {
-  return r.status === 0 && /UNABLE_TO_VERIFY_LEAF_SIGNATURE|DH_KEY_TOO_SMALL|ALTNAME_INVALID|UNABLE_TO_GET_ISSUER_CERT/i.test(r.error ?? '')
+  return r.status === 0 && /UNABLE_TO_VERIFY_LEAF_SIGNATURE|DH_KEY_TOO_SMALL|ALTNAME_INVALID|UNABLE_TO_GET_ISSUER_CERT|UNSAFE_LEGACY_RENEGOTIATION/i.test(r.error ?? '')
 }
 
 async function probe(url, previous) {

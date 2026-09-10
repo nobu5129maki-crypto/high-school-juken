@@ -62,16 +62,29 @@ function parseCsv(text) {
 }
 
 /** 住所から市区町村を取り出す（東京23区は区、郡部は郡＋町村、それ以外は市） */
+// 行政区をもつ政令指定都市（「玉野市東七区」のような地名の「区」を区名と誤認しないための許可リスト）
+const DESIGNATED_CITIES = new Set([
+  '札幌市', '仙台市', 'さいたま市', '千葉市', '横浜市', '川崎市', '相模原市', '新潟市', '静岡市', '浜松市',
+  '名古屋市', '京都市', '大阪市', '堺市', '神戸市', '岡山市', '広島市', '北九州市', '福岡市', '熊本市',
+])
+
 function cityOf(address, pref) {
   let a = address.replace(/\s+/g, '')
   if (a.startsWith(pref)) a = a.slice(pref.length)
   // 郡部（市・区より前に「郡」が来る）→ 郡＋町村
   const gun = a.match(/^([^市区郡]*?郡[^市区]*?[町村])/)
   if (gun) return gun[1]
-  // 市 または 東京23区。政令市は「〇〇市△△区」まで含める
+  // 市 または 東京23区。政令指定都市だけは「〇〇市△△区」まで含める
   // （四日市・廿日市・市原・市川は名前に「市」を含むため先に固定で拾う）
-  const shi = a.match(/^((?:四日市|廿日市|市原|市川|.+?)[市区](?:[^市区町村郡0-9０-９]{1,4}区)?)/)
-  if (shi) return shi[1]
+  const shi = a.match(/^((?:四日市|廿日市|市原|市川|.+?)[市区])(.*)$/)
+  if (shi) {
+    const city = shi[1]
+    if (DESIGNATED_CITIES.has(city)) {
+      const ward = shi[2].match(/^([^市区町村郡0-9０-９]{1,4}区)/)
+      if (ward) return city + ward[1]
+    }
+    return city
+  }
   const cho = a.match(/^(.+?[町村])/)
   return cho ? cho[1] : ''
 }

@@ -6,7 +6,7 @@ import type { Seed } from './seed'
  * 部活は公式サイト等で存在を確認できたものだけを載せる（無いものは「未確認」扱い）。
  * 偏差値は複数の受験情報サイトで公表されている目安を丸めた値。年度で変わるため必ず最新の資料で確認。
  */
-type Quick = {
+export type Quick = {
   id: string
   name: string
   pref: string
@@ -48,6 +48,25 @@ const EXAM: Record<string, { style: string; season: string; key: string }> = {
   '兵庫県|私立': { style: '私立一般（3〜5教科）／専願・併願', season: '2月10日〜（私立）', key: 'private-feb10' },
   '愛知県|私立': { style: '私立一般（5教科）／推薦', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
   '福岡県|私立': { style: '私立一般（5教科）／専願・前期', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
+  // ---- 第2弾（北海道・東北・北関東・静岡・中四国・九州）
+  '北海道|公立': { style: '学力検査（5教科）＋内申（ランク）', season: '3月上旬（道立一般）', key: 'hokkaido-public' },
+  '宮城県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'miyagi-public' },
+  '茨城県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'ibaraki-public' },
+  '栃木県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立一般）', key: 'tochigi-public' },
+  '群馬県|公立': { style: '学力検査（5教科）＋調査書（＋面接等の学校あり）', season: '2月下旬〜3月上旬（県立）', key: 'gunma-public' },
+  '静岡県|公立': { style: '学力検査（5教科）＋調査書＋面接', season: '3月上旬（県立一般）', key: 'shizuoka-public' },
+  '広島県|公立': { style: '学力検査（5教科）＋調査書＋自己表現', season: '2月下旬〜3月上旬（県立一般）', key: 'hiroshima-public' },
+  '岡山県|公立': { style: '学力検査（5教科）＋調査書（＋面接等）', season: '3月上旬（県立一般）', key: 'okayama-public' },
+  '熊本県|公立': { style: '学力検査（5教科）＋調査書', season: '3月上旬（県立後期）', key: 'kumamoto-public' },
+  '北海道|私立': { style: '私立一般（5教科）／推薦・単願', season: '2月中旬（私立）', key: 'private-feb' },
+  '宮城県|私立': { style: '私立一般（5教科）／推薦・専願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
+  '茨城県|私立': { style: '私立一般（3〜5教科）／推薦・単願', season: '1月中旬〜（私立）', key: 'private-jan' },
+  '栃木県|私立': { style: '私立一般（3〜5教科）／推薦・単願', season: '1月上旬〜（私立）', key: 'private-jan' },
+  '群馬県|私立': { style: '私立一般（3〜5教科）／推薦・単願', season: '1月上旬〜（私立）', key: 'private-jan' },
+  '静岡県|私立': { style: '私立一般（3〜5教科）／推薦・単願', season: '2月上旬（私立）', key: 'private-feb' },
+  '広島県|私立': { style: '私立一般（3〜5教科）／推薦・専願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
+  '岡山県|私立': { style: '私立一般（3〜5教科）／推薦・専願', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
+  '熊本県|私立': { style: '私立一般（3〜5教科）／専願・奨学生', season: '1月下旬〜2月上旬（私立）', key: 'private-jan' },
 }
 
 function notes(q: Quick) {
@@ -73,7 +92,7 @@ function notes(q: Quick) {
   return { teacherNote: teacher, jukuNote: juku, studentNote: student }
 }
 
-function q(x: Quick): Seed {
+export function q(x: Quick): Seed {
   const ex = EXAM[`${x.pref}|${x.kind}`] ?? { style: '学力検査＋調査書', season: '2〜3月', key: `${x.kind === '私立' ? 'private' : 'public'}-generic` }
   return {
     id: x.id,
