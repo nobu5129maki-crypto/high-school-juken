@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   AREA_SCOPES,
@@ -32,6 +32,11 @@ export default function Diagnosis() {
   const [step, setStep] = useState(0)
   const [form, setForm] = useState<Profile>(loadOrEmpty)
   const pct = ((step + 1) / STEPS.length) * 100
+
+  // 「次へ」「戻る」で質問が変わったら先頭へ。スマホで下までスクロールして押すと、次の質問の見出しが見えないままになるため
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [step])
 
   const set = <K extends keyof Profile>(key: K, value: Profile[K]) => setForm((f) => ({ ...f, [key]: value }))
   const togglePri = (list: Priority[], item: Priority) =>
@@ -107,8 +112,8 @@ export default function Diagnosis() {
             <input className="range" type="range" min={35} max={76} value={form.hensachi} onChange={(e) => set('hensachi', Number(e.target.value))} />
           </label>
           <label className="field">
-            <span>9教科内申の合計目安　{form.naishin}（5〜45）</span>
-            <input className="range" type="range" min={15} max={45} value={form.naishin} onChange={(e) => set('naishin', Number(e.target.value))} />
+            <span>9教科内申の合計目安　{form.naishin}（9〜45）</span>
+            <input className="range" type="range" min={9} max={45} value={form.naishin} onChange={(e) => set('naishin', Number(e.target.value))} />
           </label>
           <p className="tiny">都立は換算内申、神奈川は中2・中3の積み上げなど、地域ルールは結果画面でも案内します。</p>
         </section>

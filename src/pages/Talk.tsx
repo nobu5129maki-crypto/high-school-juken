@@ -42,7 +42,7 @@ export default function Talk() {
         <article className="panel side">
           <h3>保護者</h3>
           <p>{profile.parentPriorities.join('・') || '未選択'}</p>
-          <p className="muted">通学 {profile.commuteMax}分　{profile.kind}</p>
+          <p className="muted">通学 {profile.commuteMax === 0 ? '制限なし' : `${profile.commuteMax}分まで`}　{profile.kind}</p>
         </article>
       </div>
 

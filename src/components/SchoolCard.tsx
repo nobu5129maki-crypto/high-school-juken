@@ -3,7 +3,7 @@ import { clubLabel } from '../lib/matching'
 import type { MatchResult, Profile } from '../types'
 import SchoolLinks from './SchoolLinks'
 
-export default function SchoolCard({ match, profile }: { match: MatchResult; profile: Profile }) {
+export default function SchoolCard({ match, profile, inPlan = false }: { match: MatchResult; profile: Profile; inPlan?: boolean }) {
   const { school, score, chance, clubCheck } = match
   const club = clubLabel(profile.club)
   const farAway = school.prefecture !== profile.prefecture
@@ -25,6 +25,7 @@ export default function SchoolCard({ match, profile }: { match: MatchResult; pro
           {school.station ? `最寄り ${school.station}駅 ${school.stationMin}分` : `通学約${school.commuteMin}分`}
         </div>
         <div className="tags">
+          {inPlan ? <span className="tag ok-tag">併願候補</span> : null}
           {school.model ? <span className="tag model-tag">モデル校</span> : null}
           {school.dorm ? <span className="tag dorm-tag">寮あり</span> : null}
           {farAway && !school.dorm ? <span className="tag">他県</span> : null}

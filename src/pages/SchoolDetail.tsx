@@ -1,21 +1,31 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import DataFreshness from '../components/DataFreshness'
 import SchoolLinks from '../components/SchoolLinks'
 import { DATA_UPDATED_AT, getSchool } from '../data/schools'
 import { checkClub, clubLabel, matchSchool } from '../lib/matching'
-import { loadCompare, loadFavorites, loadOrEmpty, toggleCompare, toggleFavorite } from '../lib/storage'
+import { loadCompare, loadExamList, loadFavorites, loadOrEmpty, toggleCompare, toggleFavorite } from '../lib/storage'
 
 export default function SchoolDetail() {
   const { id } = useParams()
   const school = getSchool(id ?? '')
   const profile = loadOrEmpty()
   const match = school ? matchSchool(school, profile) : null
-  const [rev, setRev] = useState(0)
-  const fav = useMemo(() => loadFavorites(), [id, rev])
-  const cmp = useMemo(() => loadCompare(), [id, rev])
+  // ボタン操作後に再描画させるためのカウンタ。描画ごとに localStorage を読み直す
+  const [, setRev] = useState(0)
+  const fav = loadFavorites()
+  const cmp = loadCompare()
+  const inPlan = school ? loadExamList().includes(school.id) : false
 
-  if (!school) return <p>学校が見つかりません。</p>
+  if (!school) {
+    return (
+      <div className="panel">
+        <h1>学校が見つかりません</h1>
+        <p className="lead">リンクが古いか、データが更新された可能性があります。</p>
+        <Link className="btn btn-primary" to="/kekka">結果へ戻る</Link>
+      </div>
+    )
+  }
 
   const club = clubLabel(profile.club)
   const clubCheck = checkClub(school, club)
@@ -30,6 +40,7 @@ export default function SchoolDetail() {
           <p className="lead">{school.description}</p>
           {school.model ? <p className="tiny">このカードは地域の中堅・実業を合成したモデル校です。</p> : null}
           <div className="tags">
+            {inPlan ? <span className="tag ok-tag">併願候補</span> : null}
             {school.dorm ? <span className="tag dorm-tag">寮あり</span> : null}
             {club ? (
               clubCheck === '確認済み' ? <span className="tag ok-tag">{club}部 確認済み</span> : <span className="tag warn-tag">{club}部 未確認</span>

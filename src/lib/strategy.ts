@@ -40,6 +40,16 @@ export function buildPlan(matches: MatchResult[], profile: Profile): {
   take('安全', (m) => m.chance === '安全' || (m.gap >= 4 && m.school.course.includes('普通科')))
   take('挑戦', (m) => m.chance === 'チャレンジ' || m.chance === '厳しい')
 
+  // 条件に合う校が少ない地域・偏差値帯では本命が空のまま「適正・挑戦」だけが並んでいた。
+  // 本命が決まらないときは、フィット点が最も高い残りの学校を本命に置く（順番は本命が先頭）
+  if (!plan.some((p) => p.slot === '本命')) {
+    const best = pool.find((m) => !used.has(m.school.id) && m.chance !== '厳しい') ?? pool.find((m) => !used.has(m.school.id))
+    if (best) {
+      used.add(best.school.id)
+      plan.unshift({ slot: '本命', match: best })
+    }
+  }
+
   if (!plan.some((p) => p.slot === '安全')) {
     warnings.push('安全校が入っていません。合格発表まで心が折れる併願です。行きたい安全校を1校加えてください。')
   }

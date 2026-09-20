@@ -5,11 +5,13 @@ import DataFreshness from '../components/DataFreshness'
 import SchoolCard from '../components/SchoolCard'
 import { DATA_UPDATED_AT } from '../data/schools'
 import { clubLabel, rankSchools } from '../lib/matching'
-import { hasDiagnosis, loadOrEmpty } from '../lib/storage'
+import { hasDiagnosis, loadExamList, loadOrEmpty } from '../lib/storage'
 import type { Chance } from '../types'
 
 export default function Results() {
-  const profile = loadOrEmpty()
+  // 毎回 localStorage から読み直すと別オブジェクトになり、検索欄の1文字ごとに全校の再採点が走っていた
+  const [profile] = useState(loadOrEmpty)
+  const [examIds] = useState(() => new Set(loadExamList()))
   const [chance, setChance] = useState<Chance | 'すべて'>('すべて')
   const [q, setQ] = useState('')
   const [onlyDorm, setOnlyDorm] = useState(profile.dorm === '寮ありのみ')
@@ -89,7 +91,7 @@ export default function Results() {
         </div>
       ) : null}
       <div className="cards">
-        {shown.slice(0, 30).map((m) => <SchoolCard key={m.school.id} match={m} profile={profile} />)}
+        {shown.slice(0, 30).map((m) => <SchoolCard key={m.school.id} match={m} profile={profile} inPlan={examIds.has(m.school.id)} />)}
       </div>
       {shown.length > 30 ? <p className="tiny">上位30校を表示しています。絞り込みで残りを確認できます。</p> : null}
       <p className="disclaimer">

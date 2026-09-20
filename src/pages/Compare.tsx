@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getSchool } from '../data/schools'
 import { checkClub, clubLabel, matchSchool } from '../lib/matching'
@@ -7,8 +7,9 @@ import type { School } from '../types'
 
 export default function Compare() {
   const profile = loadOrEmpty()
-  const [rev, setRev] = useState(0)
-  const ids = useMemo(() => loadCompare(), [rev])
+  // 「外す」後に再描画させるためのカウンタ。描画ごとに localStorage を読み直す
+  const [, setRev] = useState(0)
+  const ids = loadCompare()
   // 削除済み・不明な id が保存されていても落ちないよう、見つかった学校だけを使う
   const schools = ids.map((id) => getSchool(id)).filter((s): s is School => Boolean(s))
 

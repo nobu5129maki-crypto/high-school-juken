@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { loadProfile } from '../lib/storage'
 
@@ -10,7 +11,12 @@ const NAV = [
 ]
 
 export default function Layout() {
-  useLocation()
+  const { pathname } = useLocation()
+  // SPA はページを切り替えてもスクロール位置が残る。結果の下の方から学校詳細を開いたとき、
+  // 詳細ページの末尾が表示されてしまうため、パスが変わったら先頭に戻す
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   const profile = loadProfile()
   return (
     <div className="app-shell">
