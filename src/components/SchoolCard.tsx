@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { clubLabel } from '../lib/matching'
+import { clubLabel, stationLabel } from '../lib/matching'
 import type { MatchResult, Profile } from '../types'
 import SchoolLinks from './SchoolLinks'
 
@@ -22,7 +22,7 @@ export default function SchoolCard({ match, profile, inPlan = false }: { match: 
         <h3><Link to={`/school/${school.id}`}>{school.name}</Link></h3>
         <div className="tiny">
           偏差値目安 {school.hensachi}　内申目安 {school.naishin}　
-          {school.station ? `最寄り ${school.station}駅 ${school.stationMin}分` : `通学約${school.commuteMin}分`}
+          {school.station ? `最寄り ${stationLabel(school.station)}${school.stationMin != null ? ` ${school.stationMin}分` : ''}` : `通学約${school.commuteMin}分`}
         </div>
         <div className="tags">
           {inPlan ? <span className="tag ok-tag">併願候補</span> : null}

@@ -213,11 +213,36 @@ export function matchSchool(school: School, profile: Profile): MatchResult | nul
 /** リンク生成に必要な最小限の学校情報（詳細データ校・基本情報のみの校のどちらでも使える） */
 export type LinkTarget = { name: string; prefecture: string; city: string; station?: string }
 
+/** 「旭川（バス）」「五稜郭公園前（市電）」のような注記を除いた停留所名 */
+function stationCore(station: string) {
+  return station.split('・')[0].trim().replace(/（(?:バス|市電|路面電車)）/g, '').trim()
+}
+
+function isTram(station: string) {
+  return /（(?:市電|路面電車)）/.test(station.split('・')[0] ?? '')
+}
+
+/** 画面表示用。バス注記は駅名に戻し、市電はそのまま停留所として示す */
+export function stationLabel(station: string) {
+  const core = stationCore(station)
+  if (!core) return station
+  if (isTram(station)) return `${core}（市電）`
+  return /駅$/.test(core) ? core : `${core}駅`
+}
+
+/** 乗換検索の目的地。市電停留所に「駅」を足すと別の場所へ飛ぶため付けない */
+function stationDestination(station: string) {
+  const core = stationCore(station)
+  if (!core) return station
+  if (isTram(station) || /駅$/.test(core)) return core
+  return `${core}駅`
+}
+
 export function routeUrl(school: LinkTarget, homeStation: string) {
   const origin = homeStation.trim()
   if (!origin) return null
   const originQ = /駅$/.test(origin) ? origin : `${origin}駅`
-  const dest = school.station ? `${school.station.split('・')[0]}駅 ${school.prefecture}` : `${school.name} ${school.prefecture}${school.city}`
+  const dest = school.station ? `${stationDestination(school.station)} ${school.prefecture}` : `${school.name} ${school.prefecture}${school.city}`
   const p = new URLSearchParams({ api: '1', origin: originQ, destination: dest, travelmode: 'transit' })
   return `https://www.google.com/maps/dir/?${p.toString()}`
 }

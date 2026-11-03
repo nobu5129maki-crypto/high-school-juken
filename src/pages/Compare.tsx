@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getSchool } from '../data/schools'
-import { checkClub, clubLabel, matchSchool } from '../lib/matching'
+import { checkClub, clubLabel, matchSchool, stationLabel } from '../lib/matching'
 import { loadCompare, loadOrEmpty, toggleCompare } from '../lib/storage'
 import type { School } from '../types'
 
@@ -30,7 +30,7 @@ export default function Compare() {
     { label: '学科', get: (s) => s.course },
     { label: '偏差値', get: (s) => String(s.hensachi) },
     { label: '内申目安', get: (s) => String(s.naishin) },
-    { label: '最寄り駅', get: (s) => (s.station ? `${s.station}駅 ${s.stationMin}分` : '公式サイトで確認') },
+    { label: '最寄り駅', get: (s) => (s.station ? `${stationLabel(s.station)}${s.stationMin != null ? ` ${s.stationMin}分` : ''}` : '公式サイトで確認') },
     { label: '通学目安', get: (s) => `約${s.commuteMin}分` },
     { label: '寮', get: (s) => (s.dorm ? `あり（${(s.dormNote ?? '').replace(/。$/, '')}）` : '未確認') },
     { label: '学費', get: (s) => s.tuition },

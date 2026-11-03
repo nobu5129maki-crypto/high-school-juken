@@ -21,8 +21,18 @@ export function loadProfile(): Profile | null {
   return { ...EMPTY_PROFILE, ...raw }
 }
 
+function touchProfile() {
+  window.dispatchEvent(new Event('aukoukou-profile'))
+}
+
 export function saveProfile(profile: Profile) {
   localStorage.setItem(PROFILE, JSON.stringify(profile))
+  touchProfile()
+}
+
+export function clearProfile() {
+  localStorage.removeItem(PROFILE)
+  touchProfile()
 }
 
 export function loadOrEmpty(): Profile {

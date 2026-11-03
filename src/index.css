@@ -196,8 +196,10 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 700; letter-spacing: 0.04em
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
+.choice-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .choice-grid button {
   text-align: left;
+  min-width: 0;
   border: 1px solid var(--line);
   background: var(--white);
   border-radius: 14px;
@@ -341,5 +343,6 @@ button.on {
   .school-card .score-mark b { font-size: 22px; }
   .hanko { grid-column: 2; justify-self: start; }
   .fresh-row { grid-template-columns: 10px 1fr; }
-  .choice-grid { grid-template-columns: 1fr; }
+  .choice-grid,
+  .choice-grid.cols-3 { grid-template-columns: 1fr 1fr; }
 }

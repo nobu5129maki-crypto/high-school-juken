@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { loadProfile } from '../lib/storage'
 
@@ -12,12 +12,18 @@ const NAV = [
 
 export default function Layout() {
   const { pathname } = useLocation()
+  const [rev, setRev] = useState(0)
   // SPA はページを切り替えてもスクロール位置が残る。結果の下の方から学校詳細を開いたとき、
   // 詳細ページの末尾が表示されてしまうため、パスが変わったら先頭に戻す
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
-  const profile = loadProfile()
+  useEffect(() => {
+    const on = () => setRev((n) => n + 1)
+    window.addEventListener('aukoukou-profile', on)
+    return () => window.removeEventListener('aukoukou-profile', on)
+  }, [])
+  const profile = useMemo(() => loadProfile(), [rev])
   return (
     <div className="app-shell">
       <header className="topbar">

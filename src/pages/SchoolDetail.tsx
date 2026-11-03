@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import DataFreshness from '../components/DataFreshness'
 import SchoolLinks from '../components/SchoolLinks'
 import { DATA_UPDATED_AT, getSchool } from '../data/schools'
-import { checkClub, clubLabel, matchSchool } from '../lib/matching'
-import { loadCompare, loadExamList, loadFavorites, loadOrEmpty, toggleCompare, toggleFavorite } from '../lib/storage'
+import { checkClub, clubLabel, matchSchool, stationLabel } from '../lib/matching'
+import { hasDiagnosis, loadCompare, loadExamList, loadFavorites, loadOrEmpty, toggleCompare, toggleFavorite } from '../lib/storage'
 
 export default function SchoolDetail() {
   const { id } = useParams()
@@ -26,7 +26,6 @@ export default function SchoolDetail() {
       </div>
     )
   }
-
   const club = clubLabel(profile.club)
   const clubCheck = checkClub(school, club)
 
@@ -75,7 +74,7 @@ export default function SchoolDetail() {
           <b>内申目安</b><span>{school.naishin} / 45</span>
           <b>最寄り駅</b>
           <span>
-            {school.station ? `${school.station}駅から約${school.stationMin}分` : '公式サイトのアクセス案内で確認してください'}
+            {school.station ? `${stationLabel(school.station)}から約${school.stationMin ?? '—'}分` : '公式サイトのアクセス案内で確認してください'}
             {profile.homeStation.trim() ? '　（上の「乗換検索」で自宅の最寄り駅からの所要時間を実測できます）' : '　（診断で自宅の最寄り駅を入れると乗換検索リンクが出ます）'}
           </span>
           <b>通学目安</b><span>約{school.commuteMin}分（県庁所在地付近からの目安）</span>
@@ -110,6 +109,8 @@ export default function SchoolDetail() {
             {match.cautions.length ? <ul>{match.cautions.map((r) => <li key={r}>{r}</li>)}</ul> : <p className="muted">大きな警告はありません。見学で空気を確認してください。</p>}
           </article>
         </section>
+      ) : hasDiagnosis() ? (
+        <p className="muted">この学校は、今の診断条件（地域・公立か私立・共学など）では候補に入っていません。診断の範囲を広げるとフィットが出ます。</p>
       ) : <p className="muted">診断すると、この学校とのフィットが出ます。</p>}
 
       <section className="advice" style={{ marginTop: 16 }}>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   AREA_SCOPES,
@@ -23,7 +23,7 @@ const DORM_HELP: Record<Profile['dorm'], string> = {
   寮ありを優先: '寮のある学校を高めに評価し、通学時間の制約を外して探します。',
   寮ありのみ: '寮のある学校だけを出します（全国対象）。',
 }
-import { loadOrEmpty, saveProfile } from '../lib/storage'
+import { clearProfile, loadOrEmpty, loadProfile, saveProfile } from '../lib/storage'
 
 const STEPS = ['誰が', '地域', '今の力', '通い方', '大切なもの', '将来'] as const
 
@@ -31,12 +31,33 @@ export default function Diagnosis() {
   const nav = useNavigate()
   const [step, setStep] = useState(0)
   const [form, setForm] = useState<Profile>(loadOrEmpty)
+  const savedJson = useRef<string | null>(null)
   const pct = ((step + 1) / STEPS.length) * 100
 
   // 「次へ」「戻る」で質問が変わったら先頭へ。スマホで下までスクロールして押すと、次の質問の見出しが見えないままになるため
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [step])
+
+  useEffect(() => {
+    const json = JSON.stringify(form)
+    if (savedJson.current === null) {
+      const existing = loadProfile()
+      savedJson.current = existing ? JSON.stringify(existing) : json
+      if (!existing || savedJson.current === json) return
+    }
+    if (savedJson.current === json) return
+    savedJson.current = json
+    saveProfile(form)
+  }, [form])
+
+  const reset = () => {
+    clearProfile()
+    const blank = { ...EMPTY_PROFILE }
+    savedJson.current = JSON.stringify(blank)
+    setForm(blank)
+    setStep(0)
+  }
 
   const set = <K extends keyof Profile>(key: K, value: Profile[K]) => setForm((f) => ({ ...f, [key]: value }))
   const togglePri = (list: Priority[], item: Priority) =>
@@ -65,7 +86,7 @@ export default function Diagnosis() {
               <button key={v} className={form.role === v ? 'on' : ''} onClick={() => set('role', v)}>{l}</button>
             ))}
           </div>
-          <div className="choice-grid" style={{ marginTop: 12, gridTemplateColumns: '1fr 1fr 1fr' }}>
+          <div className="choice-grid cols-3" style={{ marginTop: 12 }}>
             {(['中1', '中2', '中3'] as const).map((g) => (
               <button key={g} className={form.grade === g ? 'on' : ''} onClick={() => set('grade', g)}>{g}</button>
             ))}
@@ -84,7 +105,7 @@ export default function Diagnosis() {
             </select>
           </label>
           <span className="tiny">候補に含める範囲</span>
-          <div className="choice-grid" style={{ marginTop: 6, marginBottom: 6, gridTemplateColumns: '1fr 1fr 1fr' }}>
+          <div className="choice-grid cols-3" style={{ marginTop: 6, marginBottom: 6 }}>
             {AREA_SCOPES.map((a) => (
               <button key={a} className={form.areaScope === a ? 'on' : ''} onClick={() => set('areaScope', a)}>{a}</button>
             ))}
@@ -134,7 +155,7 @@ export default function Diagnosis() {
             <span className="tiny">入力すると、結果の各校に「最寄り駅からの乗換検索」リンクが付き、実際の通学時間を確かめられます。</span>
           </label>
           <span className="tiny">最寄り駅からの通学時間（片道）</span>
-          <div className="choice-grid" style={{ marginTop: 6, gridTemplateColumns: '1fr 1fr 1fr' }}>
+          <div className="choice-grid cols-3" style={{ marginTop: 6 }}>
             {COMMUTE_OPTIONS.map((m) => (
               <button key={m} className={form.commuteMax === m ? 'on' : ''} onClick={() => set('commuteMax', m)}>
                 {m === 0 ? '制限なし' : `${m}分まで`}
@@ -142,7 +163,7 @@ export default function Diagnosis() {
             ))}
           </div>
           <span className="tiny" style={{ display: 'block', marginTop: 14 }}>寮の希望</span>
-          <div className="choice-grid" style={{ marginTop: 6, gridTemplateColumns: '1fr 1fr 1fr' }}>
+          <div className="choice-grid cols-3" style={{ marginTop: 6 }}>
             {DORM_PREFS.map((d) => (
               <button key={d} className={form.dorm === d ? 'on' : ''} onClick={() => set('dorm', d)}>{d}</button>
             ))}
@@ -173,7 +194,7 @@ export default function Diagnosis() {
       {step === 4 && (
         <section>
           <h1>大切にしたいこと（最大3）</h1>
-          <p className="lead">本人の希望です。保護者の希望は次で別に取ります。</p>
+          <p className="lead">本人の希望です。保護者の希望は、この下で別に選べます。</p>
           <div className="choice-grid">
             {PRIORITIES.map((p) => (
               <button key={p} className={form.priorities.includes(p) ? 'on' : ''} onClick={() => set('priorities', togglePri(form.priorities, p))}>{p}</button>
@@ -215,7 +236,7 @@ export default function Diagnosis() {
             合う高校を見る
           </button>
         )}
-        <button className="btn btn-ghost" onClick={() => setForm(EMPTY_PROFILE)}>リセット</button>
+        <button className="btn btn-ghost" onClick={reset} title="入力と保存済みの診断を消して最初から">リセット</button>
       </div>
     </div>
   )

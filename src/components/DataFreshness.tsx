@@ -22,6 +22,7 @@ function daysAgo(iso: string) {
 export default function DataFreshness({ compact = false }: { compact?: boolean }) {
   const siteAgo = daysAgo(SITE_CHECK.checkedAt)
   const baseAgo = daysAgo(BASE_META.checkedAt)
+  const stale = (siteAgo !== null && siteAgo > 10) || (baseAgo !== null && baseAgo > 10)
 
   if (compact) {
     return (
@@ -32,7 +33,7 @@ export default function DataFreshness({ compact = false }: { compact?: boolean }
   }
 
   return (
-    <section className="fresh" aria-label="自動更新される情報">
+    <section className={`fresh${stale ? ' stale' : ''}`} aria-label="自動更新される情報">
       <div className="fresh-head tiny">自動で最新に保たれている情報</div>
       <div className="fresh-row">
         <span className="fresh-dot auto" aria-hidden />
@@ -53,7 +54,9 @@ export default function DataFreshness({ compact = false }: { compact?: boolean }
         </div>
       </div>
       <p className="tiny fresh-note">
-        募集要項・部活動・偏差値の最新は各校の公式サイトと募集要項が正です。各カードの「公式サイト」から必ず確かめてください。
+        {stale
+          ? '自動確認が10日以上止まっています。表示中の日付は、最後に成功した日です。募集要項・部活動・偏差値は各校の公式サイトで確かめてください。'
+          : '募集要項・部活動・偏差値の最新は各校の公式サイトと募集要項が正です。各カードの「公式サイト」から必ず確かめてください。'}
       </p>
     </section>
   )

@@ -18,6 +18,13 @@ async function fetchOnce(url, timeoutMs) {
   const timer = setTimeout(() => ctrl.abort(), timeoutMs)
   try {
     const res = await fetch(url, { method: 'GET', redirect: 'follow', signal: ctrl.signal, headers: { 'user-agent': UA } })
+    // 本文は使わない。残すと、相手が接続を切った瞬間に undici が
+    // AssertionError (assert(!this.paused)) を投げてプロセスごと落ちる。
+    try {
+      await res.body?.cancel()
+    } catch {
+      /* 本文の破棄失敗は到達判定に影響しない */
+    }
     // 401/403 はサイト自体は存在するが自動アクセスを拒否しているケース。到達扱いにする
     const ok = res.ok || res.status === 401 || res.status === 403
     return { ok, status: res.status, finalUrl: res.url }
@@ -48,6 +55,10 @@ async function probe(url, previous) {
   if (isTlsChainError(r)) {
     return { ok: true, status: 0, error: r.error, note: 'tls-chain' }
   }
+  // 503 など一時的なサーバエラーで「リンク切れ」にしない。前回到達できていれば維持する
+  if (r.status >= 500 && previous?.ok) {
+    return { ok: true, status: r.status, note: 'http-5xx-kept' }
+  }
   if (isNetworkError(r) && previous?.ok) {
     // 海外の実行環境（GitHub Actions）からの接続を遮断している学校サイトがある。
     // DNS 不在や 404 のような「壊れた」証拠ではないので、前回 OK なら OK を維持し、状態だけ記録する
@@ -55,6 +66,17 @@ async function probe(url, previous) {
   }
   return r
 }
+
+// 一部の学校サイトは応答の途中で接続を切る。そのとき undici が Promise の外で
+// AssertionError を投げ、週次ジョブ全体が落ちて更新日が止まった（2026-09 以降）。
+// 1件の失敗では止めず、記録して残りの学校を確認する。
+process.on('uncaughtException', (err) => {
+  console.error('未処理エラーを記録して続行:', err?.code || err?.name || err?.message || err)
+})
+process.on('unhandledRejection', (err) => {
+  const message = err && typeof err === 'object' && 'message' in err ? err.message : err
+  console.error('未処理の拒否を記録して続行:', message)
+})
 
 async function main() {
   const websites = JSON.parse(await readFile(websitesPath, 'utf8'))
@@ -68,10 +90,15 @@ async function main() {
     while (i < ids.length) {
       const id = ids[i++]
       const url = websites[id]
-      const r = await probe(url, previous[id])
+      let r
+      try {
+        r = await probe(url, previous[id])
+      } catch (e) {
+        r = { ok: false, status: 0, error: String(e?.message ?? e) }
+      }
       results[id] = r
       const mark = r.note ? 'OK*' : r.ok ? 'OK ' : 'NG '
-      const noteText = r.note === 'timeout-kept' ? '  （接続タイムアウト。前回OKのため維持）' : r.note === 'tls-chain' ? '  （証明書チェーン不備。ブラウザでは表示可のためOK扱い）' : ''
+      const noteText = r.note === 'timeout-kept' ? '  （接続タイムアウト。前回OKのため維持）' : r.note === 'tls-chain' ? '  （証明書チェーン不備。ブラウザでは表示可のためOK扱い）' : r.note === 'http-5xx-kept' ? '  （一時的なサーバエラー。前回OKのため維持）' : ''
       console.log(`${mark} ${String(r.status).padStart(3)}  ${id}  ${url}${r.finalUrl && r.finalUrl !== url ? '  -> ' + r.finalUrl : ''}${r.error ? '  ' + r.error : ''}${noteText}`)
     }
   }
@@ -84,7 +111,10 @@ async function main() {
     total: ids.length,
     ok: okCount,
     results: Object.fromEntries(
-      ids.map((id) => [id, { ok: results[id].ok, status: results[id].status, ...(results[id].note ? { note: results[id].note } : {}) }]),
+      ids.map((id) => {
+        const row = results[id] ?? { ok: false, status: 0 }
+        return [id, { ok: Boolean(row.ok), status: row.status ?? 0, ...(row.note ? { note: row.note } : {}) }]
+      }),
     ),
   }
   await writeFile(outPath, JSON.stringify(out, null, 2) + '\n', 'utf8')
