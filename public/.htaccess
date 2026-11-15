@@ -1,0 +1,25 @@
+# 入口は index.php のログイン画面。中身はログイン後だけ gate.php が渡す。
+DirectoryIndex index.php
+Options -Indexes
+
+<FilesMatch "^(auth\.php|index\.html)$">
+  Require all denied
+</FilesMatch>
+
+RewriteEngine On
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^gate\.php$ - [L]
+RewriteRule ^$ index.php [L]
+RewriteRule ^index\.html$ - [L]
+
+# 実在するファイル（スクリプトや画像）はログイン後だけ渡す
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*)$ gate.php?hsj_path=$1 [B,L,QSA]
+
+# /shindan などの画面パス。未ログインはログイン画面、ログイン後はアプリ。
+RewriteRule ^ index.php [L]
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

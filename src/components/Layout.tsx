@@ -28,7 +28,7 @@ export default function Layout() {
     <div className="app-shell">
       <header className="topbar">
         <NavLink to="/" className="brand">
-          <img src="/icon.png" alt="合う高校" />
+          <img src={`${import.meta.env.BASE_URL}icon.png`} alt="合う高校" />
           <div>
             <strong>合う高校</strong>
             <span>高校受験の学校選びコンパス</span>

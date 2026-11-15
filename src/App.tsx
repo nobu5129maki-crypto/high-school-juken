@@ -9,9 +9,20 @@ import Strategy from './pages/Strategy'
 import CalendarPage from './pages/Calendar'
 import Talk from './pages/Talk'
 
+function routerBasename(): string | undefined {
+  const base = document.querySelector('base')
+  if (!base) return undefined
+  try {
+    const path = new URL(base.href).pathname.replace(/\/$/, '')
+    return path || undefined
+  } catch {
+    return undefined
+  }
+}
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename()}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
