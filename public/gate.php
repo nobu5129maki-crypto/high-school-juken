@@ -116,6 +116,25 @@ function hsj_resolve($relative)
     return $real;
 }
 
+$hsjRequested = hsj_requested_path();
+$hsjPublic = array(
+    'manifest.webmanifest' => true,
+    'sw.js' => true,
+    'icons/icon-192.png' => true,
+    'icons/icon-512.png' => true,
+);
+if (isset($hsjPublic[$hsjRequested])) {
+    $publicFile = hsj_resolve($hsjRequested);
+    if ($publicFile === '') {
+        hsj_miss();
+    }
+    header('Content-Type: ' . hsj_content_type($publicFile));
+    header('X-Content-Type-Options: nosniff');
+    header('Cache-Control: public, max-age=3600');
+    readfile($publicFile);
+    exit;
+}
+
 if (!hsj_logged_in()) {
     hsj_deny();
 }

@@ -46,6 +46,9 @@ if (hsj_logged_in()) {
         $html = preg_replace('/<head\b[^>]*>/i', '$0' . $baseTag, $html, 1);
     }
     $save = '<script>(function(){try{var i=sessionStorage.getItem("aukoko_pending_id");var p=sessionStorage.getItem("aukoko_pending_password");if(i&&p){localStorage.setItem("aukoko_login_id",i);localStorage.setItem("aukoko_login_password",p);sessionStorage.removeItem("aukoko_pending_id");sessionStorage.removeItem("aukoko_pending_password");}}catch(e){}})();</script>';
+    if (strpos($html, 'serviceWorker.register') === false) {
+        $save .= '<script>if("serviceWorker"in navigator){var b=document.querySelector("base");var scope=b?b.href:new URL("./",location.href).href;navigator.serviceWorker.register(new URL("sw.js",scope),{scope:scope}).catch(function(){});}</script>';
+    }
     $html = preg_replace('/<\\/head>/', $save . '</head>', $html, 1);
     header('Content-Type: text/html; charset=UTF-8');
     header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
@@ -70,6 +73,12 @@ http_response_code(200);
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#152238">
     <title>ログイン｜合う高校</title>
+    <link rel="manifest" href="<?php echo htmlspecialchars(hsj_base_href(), ENT_QUOTES, 'UTF-8'); ?>manifest.webmanifest">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('<?php echo htmlspecialchars(hsj_base_href(), ENT_QUOTES, 'UTF-8'); ?>sw.js', { scope: '<?php echo htmlspecialchars(hsj_base_href(), ENT_QUOTES, 'UTF-8'); ?>' }).catch(function () {});
+        }
+    </script>
     <style>
         * { box-sizing: border-box; }
         body {
