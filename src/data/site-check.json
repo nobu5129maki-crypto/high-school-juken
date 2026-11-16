@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-09T00:51:10.011Z",
+  "checkedAt": "2026-11-16T01:02:17.222Z",
   "total": 1310,
-  "ok": 1309,
+  "ok": 1308,
   "results": {
     "aichi-aichi": {
       "ok": true,
@@ -1038,8 +1038,8 @@
       "status": 200
     },
     "gunma-jutoku": {
-      "ok": true,
-      "status": 200
+      "ok": false,
+      "status": 0
     },
     "gunma-kiryu": {
       "ok": true,
@@ -3454,8 +3454,7 @@
     },
     "okayama-shodai-fuzoku": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "okayama-shujitsu": {
       "ok": true,
@@ -3567,8 +3566,7 @@
     },
     "osaka-doshisha-kori": {
       "ok": true,
-      "status": 503,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "osaka-flex": {
       "ok": true,
@@ -4316,7 +4314,8 @@
     },
     "shizuoka-hamamatsu-minami": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "shizuoka-hamamatsu-nishi": {
       "ok": true,
@@ -4444,13 +4443,11 @@
     },
     "tochigi-ishibashi": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-kanuma": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-kokugakuin-tochigi": {
       "ok": true,
@@ -4458,13 +4455,11 @@
     },
     "tochigi-otawara": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-oyama": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-sakushin": {
       "ok": true,
@@ -4472,8 +4467,7 @@
     },
     "tochigi-sano": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-sano-nichidai": {
       "ok": true,
@@ -4481,8 +4475,7 @@
     },
     "tochigi-tochigi": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-utanf": {
       "ok": true,
@@ -4490,33 +4483,27 @@
     },
     "tochigi-utsunomiya": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-utsunomiya-chuo": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-utsunomiya-joshi": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-utsunomiya-kita": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-utsunomiya-kogyo": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tochigi-utsunomiya-shogyo": {
       "ok": true,
-      "status": 502,
-      "note": "http-5xx-kept"
+      "status": 200
     },
     "tokushima-bunri": {
       "ok": true,
