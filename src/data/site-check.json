@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-16T01:02:17.222Z",
+  "checkedAt": "2026-11-23T01:36:11.775Z",
   "total": 1310,
-  "ok": 1308,
+  "ok": 1309,
   "results": {
     "aichi-aichi": {
       "ok": true,
@@ -498,7 +498,8 @@
     },
     "chiba-seibudai-chiba": {
       "ok": true,
-      "status": 200
+      "status": 500,
+      "note": "http-5xx-kept"
     },
     "chiba-senshu-matsudo": {
       "ok": true,
@@ -1038,8 +1039,8 @@
       "status": 200
     },
     "gunma-jutoku": {
-      "ok": false,
-      "status": 0
+      "ok": true,
+      "status": 200
     },
     "gunma-kiryu": {
       "ok": true,
@@ -2750,8 +2751,7 @@
     },
     "mie-ise": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "mie-kaisei": {
       "ok": true,
@@ -2763,8 +2763,7 @@
     },
     "mie-kawagoe": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "mie-kuwana": {
       "ok": true,
@@ -2772,8 +2771,7 @@
     },
     "mie-matsusaka": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "mie-mie": {
       "ok": true,
@@ -2789,8 +2787,7 @@
     },
     "mie-tsu-higashi": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "mie-tsu-nishi": {
       "ok": true,
@@ -2798,13 +2795,11 @@
     },
     "mie-ueno": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "mie-ujiyamada": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "mie-yokkaichi": {
       "ok": true,
@@ -3137,8 +3132,7 @@
     },
     "nara-gakuen": {
       "ok": true,
-      "status": 0,
-      "note": "tls-chain"
+      "status": 200
     },
     "nara-horyuji-kokusai": {
       "ok": true,
@@ -4314,12 +4308,12 @@
     },
     "shizuoka-hamamatsu-minami": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 200
     },
     "shizuoka-hamamatsu-nishi": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "shizuoka-hamamatsu-nittai": {
       "ok": true,
@@ -4443,11 +4437,13 @@
     },
     "tochigi-ishibashi": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-kanuma": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-kokugakuin-tochigi": {
       "ok": true,
@@ -4455,11 +4451,13 @@
     },
     "tochigi-otawara": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-oyama": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-sakushin": {
       "ok": true,
@@ -4467,7 +4465,8 @@
     },
     "tochigi-sano": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-sano-nichidai": {
       "ok": true,
@@ -4475,7 +4474,8 @@
     },
     "tochigi-tochigi": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-utanf": {
       "ok": true,
@@ -4483,27 +4483,33 @@
     },
     "tochigi-utsunomiya": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-utsunomiya-chuo": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-utsunomiya-joshi": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-utsunomiya-kita": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-utsunomiya-kogyo": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tochigi-utsunomiya-shogyo": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tokushima-bunri": {
       "ok": true,
@@ -4543,7 +4549,8 @@
     },
     "tokushima-shiritsu": {
       "ok": true,
-      "status": 200
+      "status": 0,
+      "note": "timeout-kept"
     },
     "tokushima-shogyo": {
       "ok": true,
@@ -5191,8 +5198,7 @@
     },
     "yamagata-yonezawa-kojokan": {
       "ok": true,
-      "status": 0,
-      "note": "timeout-kept"
+      "status": 403
     },
     "yamaguchi-chuo": {
       "ok": true,
